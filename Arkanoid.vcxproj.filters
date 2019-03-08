@@ -7,7 +7,19 @@
     <Filter Include="Source\Systems">
       <UniqueIdentifier>{99b20a20-a360-45aa-a303-bf47c6e248fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Structures">
+    <Filter Include="Source\GUI">
+      <UniqueIdentifier>{169e3846-13da-4338-b319-455f018ba943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects">
+      <UniqueIdentifier>{dab875e8-3a0d-4d84-825d-06bd36f171db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Systems\Components">
+      <UniqueIdentifier>{e7086b99-ab03-4460-bb10-43caa7d44fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Widgets">
+      <UniqueIdentifier>{35b54b74-031b-4f5b-ab4d-12b4d662c36b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Headers">
       <UniqueIdentifier>{0dd2a41c-382d-444c-ad6c-545079a27c39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -24,6 +36,21 @@
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\Ball.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\Components\PhysicsComponent.cpp">
+      <Filter>Source\Systems\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Widgets\PlayingWidget.cpp">
+      <Filter>Source\GUI\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Brick.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Widgets\Widget.cpp">
+      <Filter>Source\GUI\Widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Systems\ArkanoidGame.h">
@@ -35,8 +62,29 @@
     <ClInclude Include="Source\Systems\ArkanoidInput.h">
       <Filter>Source\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Structures\BasicStructures.h">
-      <Filter>Source\Structures</Filter>
+    <ClInclude Include="Source\Objects\Ball.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\Components\PhysicsComponent.h">
+      <Filter>Source\Systems\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Widgets\PlayingWidget.h">
+      <Filter>Source\GUI\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Brick.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Widgets\Widget.h">
+      <Filter>Source\GUI\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\DebugHeader.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\GraphicsHeader.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\BasicHeader.h">
+      <Filter>Source\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

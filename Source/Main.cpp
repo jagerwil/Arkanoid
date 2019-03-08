@@ -13,10 +13,13 @@ int main()
     Clock clock;
     Time deltaTime;
 
+    ArkanoidGame* game = new ArkanoidGame();
     ArkanoidGraphics* graphics = new ArkanoidGraphics(screenSize);
-    ArkanoidGame* game = new ArkanoidGame(graphics);
+    game->init(graphics);
+    graphics->init(game);
     ArkanoidInput* input = new ArkanoidInput(game, graphics);
 
+    clock.restart();
     while (graphics->isOpen())
     {
         deltaTime = clock.getElapsedTime();
@@ -24,7 +27,7 @@ int main()
 
         input->handleEvents();
         game->tick(deltaTime);
-        graphics->draw();
+        graphics->drawAll();
     }
 
     return 0;
