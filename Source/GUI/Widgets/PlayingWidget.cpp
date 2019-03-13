@@ -18,5 +18,9 @@ void PlayingWidget::draw()
     {
         graphics->draw(ball.getSprite());
     }
+
+    Platform& platform = gameField->getPlatform();
+    graphics->draw(platform.getSprite());
+
     ///...
 }

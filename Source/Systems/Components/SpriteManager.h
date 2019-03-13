@@ -9,13 +9,17 @@ protected:
     static Vector2i smallBallSize;
     static Vector2i largeBallSize;
 
-    Texture smallBalls;
-    Texture largeBalls;
+    Texture smallBallsTexture;
+    Texture largeBallsTexture;
+    Texture platformTexture;
 
     Texture smallBallsBitmap;
     Texture largeBallsBitmap;
 
 public:
     SpriteManager();
+    bool loadPlatformSprite(Platform& platform);
     bool loadBallSprite(Ball& ball);
+    bool loadBrickSprite(Brick& brick);
+    bool loadUpgradeSprite(Upgrade& update);
 };

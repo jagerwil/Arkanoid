@@ -3,14 +3,15 @@
 
 
 GameField::GameField():
-    platform {Platform(Vector2f{0, 0})}
+    platform {Platform(Vector2f{100, 680}, Vector2f{120, 20})}
 {
     spriteManager = new SpriteManager;
+    spriteManager->loadPlatformSprite(platform);
 }
 
-void GameField::movePlatform(float deltaX)
+void GameField::movePlatform(float x)
 {
-    platform.move(Vector2f{deltaX, 0});
+    platform.setX(x);
 }
 
 void GameField::spawnBall(Vector2f coords, BallSize size, BallType type)
@@ -47,6 +48,11 @@ vector<Brick>& GameField::getBricks()
 vector<Upgrade>& GameField::getUpgrades()
 {
     return upgrades;
+}
+
+Platform& GameField::getPlatform()
+{
+    return platform;
 }
 
 Ball& GameField::getBall(Uint8 index)

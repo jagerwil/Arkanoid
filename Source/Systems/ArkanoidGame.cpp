@@ -40,6 +40,14 @@ void ArkanoidGame::tick(Time deltaTime)
     }
 }
 
+void ArkanoidGame::movePlatform(float x)
+{
+    if (gameState == GameState::PLAYING)
+    {
+        gameField->movePlatform(x);
+    }
+}
+
 void ArkanoidGame::setGameState(GameState gameState)
 {
     this->gameState = gameState;

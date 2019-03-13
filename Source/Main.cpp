@@ -2,11 +2,12 @@
 #include "Systems/ArkanoidGame.h"
 #include "Systems/ArkanoidGraphics.h"
 #include "Systems/ArkanoidInput.h"
-
+///USING GLOBAL VARIABLE!!!
 
 int main()
 {
-    Vector2i screenSize = {1366, 768};
+    ///screenSize = {1366, 768};
+
     Clock clock;
     Time deltaTime;
 

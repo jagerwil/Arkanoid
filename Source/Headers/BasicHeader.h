@@ -14,3 +14,6 @@ using sf::Vector2;
 using sf::Vector2i;
 using sf::Vector2u;
 using sf::Vector2f;
+
+///GLOBAL VARIABLE!
+static Vector2i screenSize = {1366, 768};

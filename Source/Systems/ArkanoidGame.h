@@ -20,6 +20,7 @@ public:
     void init(ArkanoidGraphics* graphics);
 
     void tick(Time deltaTime);
+    void movePlatform(float x);
 
     void setGameState(GameState gameState);
     GameField* getGameField();

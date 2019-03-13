@@ -20,7 +20,7 @@ protected:
 public:
     GameField();
 
-    void movePlatform(float deltaX);
+    void movePlatform(float x);
 
     void spawnBall(Vector2f coords, BallSize size = BallSize::SMALL, 
                    BallType type = BallType::COMMON);
@@ -35,5 +35,6 @@ public:
     vector<Ball>& getBalls();
     vector<Brick>& getBricks();
     vector<Upgrade>& getUpgrades();
+    Platform& getPlatform();
     Ball& getBall(Uint8 index);
 };

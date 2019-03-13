@@ -2,6 +2,8 @@
 #include "ArkanoidGame.h"
 #include "ArkanoidGraphics.h"
 using sf::Keyboard;
+using sf::Event;
+using sf::Mouse;
 
 
 ArkanoidInput::ArkanoidInput(ArkanoidGame* game, ArkanoidGraphics* graphics)
@@ -12,7 +14,7 @@ ArkanoidInput::ArkanoidInput(ArkanoidGame* game, ArkanoidGraphics* graphics)
 
 void ArkanoidInput::handleEvents()
 {
-    sf::Event event;
+    Event event;
     while (graphics->pollEvent(event))
     {
         if (event.type == Event::Closed)
@@ -49,7 +51,8 @@ void ArkanoidInput::inputMouse(Event& event)
 {
     if (event.type == Event::MouseMoved)
     {
-        ///...
+        Vector2i mouseCoords = Mouse::getPosition(*graphics);
+        game->movePlatform((float)mouseCoords.x);
     }
     if (event.type == Event::MouseButtonPressed)
     {
