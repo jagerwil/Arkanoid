@@ -1,14 +1,17 @@
 #pragma once
 #include "Headers/BasicHeader.h"
-#include "Objects/Ball.h"
+#include "Objects/GameField.h"
 
 
 class PhysicsComponent
 {
+protected:
+    GameField* gameField;
+
 public:
-    PhysicsComponent();
+    PhysicsComponent(GameField* gameField);
 
     void tick(Time deltaTime);
-    void moveBalls(vector<Ball>& balls, Time deltaTime);
+    void moveBalls(Time deltaTime);
     void moveBall(Ball& ball, Time deltaTime);
 };

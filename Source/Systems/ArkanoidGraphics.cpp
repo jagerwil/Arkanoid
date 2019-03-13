@@ -10,16 +10,16 @@ ArkanoidGraphics::ArkanoidGraphics(Vector2i screenSize)
     create(VideoMode(screenSize.x, screenSize.y), "Arkanoid", Close);
 }
 
+void ArkanoidGraphics::init(ArkanoidGame* game)
+{
+    this->game = game;
+}
+
 void ArkanoidGraphics::drawAll()
 {
     clear();
     currentWidget->draw();
     display();
-}
-
-void ArkanoidGraphics::update()
-{
-    ///...
 }
 
 void ArkanoidGraphics::updateGameState(GameState& gameState)
@@ -37,22 +37,12 @@ void ArkanoidGraphics::updateGameState(GameState& gameState)
         break;
 
     case GameState::PLAYING:
-        playing = new PlayingWidget(Vector2f{0, 0}, Vector2f{1366, 768}, this);
-        currentWidget = playing;
+        playingWidget = new PlayingWidget(Vector2f{0, 0}, (Vector2f)getSize(), this, game->getGameField());
+        currentWidget = playingWidget;
         break;
 
     case GameState::END_GAME:
         ///...
         break;
     }
-}
-
-vector<BallData> ArkanoidGraphics::getBallsData()
-{
-    return game->getBallsData();
-}
-
-void ArkanoidGraphics::init(ArkanoidGame* game)
-{
-    this->game = game;
 }

@@ -22,6 +22,9 @@
     <Filter Include="Source\Headers">
       <UniqueIdentifier>{0dd2a41c-382d-444c-ad6c-545079a27c39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Objects\Instances">
+      <UniqueIdentifier>{734593ac-1115-4b1b-bdda-583866749750}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Systems\ArkanoidGame.cpp">
@@ -36,20 +39,32 @@
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\Ball.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Systems\Components\PhysicsComponent.cpp">
       <Filter>Source\Systems\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\GUI\Widgets\PlayingWidget.cpp">
       <Filter>Source\GUI\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\Brick.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Widgets\Widget.cpp">
       <Filter>Source\GUI\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Systems\Components\SpriteManager.cpp">
+      <Filter>Source\Systems\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\GameField.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Instances\Ball.cpp">
+      <Filter>Source\Objects\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Instances\Platform.cpp">
+      <Filter>Source\Objects\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Instances\Upgrade.cpp">
+      <Filter>Source\Objects\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Object.cpp">
+      <Filter>Source\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,17 +77,11 @@
     <ClInclude Include="Source\Systems\ArkanoidInput.h">
       <Filter>Source\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Objects\Ball.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Systems\Components\PhysicsComponent.h">
       <Filter>Source\Systems\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Widgets\PlayingWidget.h">
       <Filter>Source\GUI\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Brick.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Widgets\Widget.h">
       <Filter>Source\GUI\Widgets</Filter>
@@ -83,8 +92,29 @@
     <ClInclude Include="Source\Headers\GraphicsHeader.h">
       <Filter>Source\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Systems\Components\SpriteManager.h">
+      <Filter>Source\Systems\Components</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Headers\BasicHeader.h">
       <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Headers\BasicStructures.h">
+      <Filter>Source\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\GameField.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Object.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Instances\Ball.h">
+      <Filter>Source\Objects\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Instances\Platform.h">
+      <Filter>Source\Objects\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Instances\Upgrade.h">
+      <Filter>Source\Objects\Instances</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,20 +1,24 @@
 #include "ArkanoidGame.h"
 #include "ArkanoidGraphics.h"
 #include "Components/PhysicsComponent.h"
+#include "Objects/GameField.h"
 
 
 ArkanoidGame::ArkanoidGame()
 {
-    physics = new PhysicsComponent();
-    
-    balls.push_back(Ball(Vector2f{700.f, 500.f}, BallSize::SMALL));
-    balls[0].setSpeed(50.f);
-    balls[0].setRotation(-90.f);
+    gameField = new GameField();
+    physics = new PhysicsComponent(gameField);
 }
 
-void ArkanoidGame::init(ArkanoidGraphics * graphics)
+void ArkanoidGame::init(ArkanoidGraphics* graphics)
 {
     this->graphics = graphics;
+
+    gameField->spawnBall(Vector2f{700.f, 500.f});
+    Ball& ball = gameField->getBall(0);
+    ball.setSpeed(50.f);
+    ball.setRotation(-90.f);
+
     setGameState(GameState::PLAYING);
 }
 
@@ -27,18 +31,13 @@ void ArkanoidGame::tick(Time deltaTime)
         break;
 
     case GameState::PLAYING:
-        physics->moveBalls(balls, deltaTime);
+        physics->moveBalls(deltaTime);
         break;
 
     case GameState::END_GAME:
         ///...
         break;
     }
-}
-
-void ArkanoidGame::removeBall(Uint32 index)
-{
-    balls.erase(balls.begin() + index);
 }
 
 void ArkanoidGame::setGameState(GameState gameState)
@@ -63,19 +62,7 @@ void ArkanoidGame::setGameState(GameState gameState)
     graphics->updateGameState(gameState);
 }
 
-vector<Ball>& ArkanoidGame::getBalls()
+GameField* ArkanoidGame::getGameField()
 {
-    return balls;
-}
-
-vector<BallData> ArkanoidGame::getBallsData()
-{
-    vector<BallData> ballsData;
-
-    for (Ball& ball : balls)
-    {
-        ballsData.push_back(BallData(ball.getPosition(), ball.getRadius()));
-    }
-
-    return ballsData;
+    return gameField;
 }

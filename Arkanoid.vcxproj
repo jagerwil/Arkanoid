@@ -125,25 +125,34 @@
     <ClCompile Include="Source\GUI\Widgets\PlayingWidget.cpp" />
     <ClCompile Include="Source\GUI\Widgets\Widget.cpp" />
     <ClCompile Include="Source\Main.cpp" />
-    <ClCompile Include="Source\Objects\Ball.cpp" />
-    <ClCompile Include="Source\Objects\Brick.cpp" />
+    <ClCompile Include="Source\Objects\GameField.cpp" />
+    <ClCompile Include="Source\Objects\Instances\Ball.cpp" />
+    <ClCompile Include="Source\Objects\Instances\Platform.cpp" />
+    <ClCompile Include="Source\Objects\Instances\Upgrade.cpp" />
+    <ClCompile Include="Source\Objects\Object.cpp" />
     <ClCompile Include="Source\Systems\ArkanoidGame.cpp" />
     <ClCompile Include="Source\Systems\ArkanoidGraphics.cpp" />
     <ClCompile Include="Source\Systems\ArkanoidInput.cpp" />
     <ClCompile Include="Source\Systems\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="Source\Systems\Components\SpriteManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GUI\Widgets\PlayingWidget.h" />
     <ClInclude Include="Source\GUI\Widgets\Widget.h" />
     <ClInclude Include="Source\Headers\BasicHeader.h" />
+    <ClInclude Include="Source\Headers\BasicStructures.h" />
     <ClInclude Include="Source\Headers\DebugHeader.h" />
     <ClInclude Include="Source\Headers\GraphicsHeader.h" />
-    <ClInclude Include="Source\Objects\Ball.h" />
-    <ClInclude Include="Source\Objects\Brick.h" />
+    <ClInclude Include="Source\Objects\GameField.h" />
+    <ClInclude Include="Source\Objects\Instances\Ball.h" />
+    <ClInclude Include="Source\Objects\Instances\Platform.h" />
+    <ClInclude Include="Source\Objects\Instances\Upgrade.h" />
+    <ClInclude Include="Source\Objects\Object.h" />
     <ClInclude Include="Source\Systems\ArkanoidGame.h" />
     <ClInclude Include="Source\Systems\ArkanoidGraphics.h" />
     <ClInclude Include="Source\Systems\ArkanoidInput.h" />
     <ClInclude Include="Source\Systems\Components\PhysicsComponent.h" />
+    <ClInclude Include="Source\Systems\Components\SpriteManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

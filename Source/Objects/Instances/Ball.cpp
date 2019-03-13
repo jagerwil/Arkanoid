@@ -6,26 +6,21 @@ using std::cos;
 
 float Ball::radian = 180.f / 3.14159f;
 
-Ball::Ball(Vector2f coords, BallSize size)
+Ball::Ball(Vector2f coords, BallSize size, BallType type):
+    Object(coords)
 {
     setPosition(coords);
     setSize(size);
+    setType(type);
+
+    sprite.setOrigin((float)size, (float)size);
+    bitmap.setOrigin((float)size, (float)size);
 }
 
 void Ball::recalculate()
 {
     movementVector.x = speed * cos(angle / radian);
     movementVector.y = speed * sin(angle / radian);
-}
-
-void Ball::move(Vector2f offset)
-{
-    setPosition(coords + offset);
-}
-
-void Ball::setPosition(Vector2f coords)
-{
-    this->coords = coords;
 }
 
 void Ball::setSpeed(float speed)
@@ -45,9 +40,9 @@ void Ball::setSize(BallSize size)
     this->size = size;
 }
 
-Vector2f Ball::getPosition()
+void Ball::setType(BallType type)
 {
-    return coords;
+    this->type = type;
 }
 
 Vector2f Ball::getMovementVector()
@@ -58,6 +53,11 @@ Vector2f Ball::getMovementVector()
 BallSize Ball::getSize()
 {
     return size;
+}
+
+BallType Ball::getType()
+{
+    return type;
 }
 
 Uint8 Ball::getRadius()

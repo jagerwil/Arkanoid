@@ -1,10 +1,7 @@
-#include <SFML/System/Clock.hpp>
-#include "Systems/ArkanoidInput.h"
+#include "Headers/BasicHeader.h"
 #include "Systems/ArkanoidGame.h"
 #include "Systems/ArkanoidGraphics.h"
-using sf::Vector2i;
-using sf::Clock;
-using sf::Time;
+#include "Systems/ArkanoidInput.h"
 
 
 int main()
@@ -15,9 +12,10 @@ int main()
 
     ArkanoidGame* game = new ArkanoidGame();
     ArkanoidGraphics* graphics = new ArkanoidGraphics(screenSize);
-    game->init(graphics);
-    graphics->init(game);
     ArkanoidInput* input = new ArkanoidInput(game, graphics);
+
+    graphics->init(game);
+    game->init(graphics);
 
     clock.restart();
     while (graphics->isOpen())

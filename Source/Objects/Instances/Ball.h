@@ -1,32 +1,29 @@
 #pragma once
-#include "Headers/BasicHeader.h"
-#include <SFML/Graphics/Transformable.hpp>
-using sf::Transformable;
+#include "Objects/Object.h"
 
 
-class Ball
+class Ball : public Object
 {
 protected:
     static float radian /* = 180.f / 3.14159f */;
 
     BallSize size;
-    Vector2f coords;
+    BallType type;
+    Vector2f movementVector;
     float speed;
     float angle;
-    Vector2f movementVector;
-
+    
 public:
-    Ball(Vector2f coords, BallSize size);
+    Ball(Vector2f coords, BallSize size = BallSize::SMALL, BallType type = BallType::COMMON);
     void recalculate();
-    void move(Vector2f offset);
 
-    void setPosition(Vector2f coords);
     void setSpeed(float speed);
     void setRotation(float angle);
     void setSize(BallSize size);
+    void setType(BallType type);
 
-    Vector2f getPosition();
     Vector2f getMovementVector();
     BallSize getSize();
+    BallType getType();
     Uint8 getRadius();
 };

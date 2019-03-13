@@ -10,20 +10,16 @@ class ArkanoidGraphics : public RenderWindow
 {
 protected:
     ArkanoidGame* game;
-    Widget* currentWidget;
 
-    PlayingWidget* playing;
+    PlayingWidget* playingWidget;
+    Widget* currentWidget;
 
     GameState currentState;
 
 public:
     ArkanoidGraphics(Vector2i screenSize);
+    void init(ArkanoidGame* game);
 
     void drawAll();
-    void update();
     void updateGameState(GameState& gameState);
-
-    vector<BallData> getBallsData();
-
-    void init(ArkanoidGame* game);
 };

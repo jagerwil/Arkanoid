@@ -1,11 +1,9 @@
 #include "PlayingWidget.h"
-#include "SFML/Graphics/CircleShape.hpp"
-using sf::CircleShape;
-using sf::Color;
 
 
-PlayingWidget::PlayingWidget(Vector2f coords, Vector2f size, ArkanoidGraphics* graphics):
-    Widget(coords, size, graphics)
+PlayingWidget::PlayingWidget(Vector2f coords, Vector2f size, ArkanoidGraphics* graphics, GameField* gameField):
+    Widget(coords, size, graphics),
+    gameField {gameField}
 {
     ///...
 }
@@ -14,15 +12,11 @@ void PlayingWidget::draw()
 {
     graphics->draw(*this);
 
-    vector<BallData> ballsData = graphics->getBallsData();
-    for (auto ballData : ballsData)
-    {
-        CircleShape shape;
-        shape.setPosition(ballData.coords);
-        shape.setRadius(ballData.radius);
-        shape.setFillColor(Color::Green);
-        graphics->draw(shape);
-    }
+    vector<Ball>& balls = gameField->getBalls();
 
+    for (Ball& ball : balls)
+    {
+        graphics->draw(ball.getSprite());
+    }
     ///...
 }

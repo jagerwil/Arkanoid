@@ -1,4 +1,5 @@
 #pragma once
+#include "Headers/GraphicsHeader.h"
 #include "Systems/ArkanoidGraphics.h"
 
 
