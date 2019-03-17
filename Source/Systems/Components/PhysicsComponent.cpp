@@ -1,6 +1,8 @@
 #include "PhysicsComponent.h"
 #include <cmath>
 using std::round;
+///DEBUG
+#include "Headers/DebugHeader.h"
 
 
 PhysicsComponent::PhysicsComponent(GameField* gameField):
@@ -52,5 +54,13 @@ void PhysicsComponent::moveBall(Ball& ball, Uint32 index, Time deltaTime)
         partialBitmap.initialize(bitmapSize);
         partialBitmap.copyPartial(gameField->getBitmap(), bitmapCoords, Vector2i{0, 0}, bitmapSize);
         vector<Vector2i> points = getCollisionPoints(ball.getBitmap(), partialBitmap);
+
+        if (points.size != 0)
+        {
+            ///...
+        }
+
+        ///DEBUG
+        cout << points.size() << endl;
     }
 }

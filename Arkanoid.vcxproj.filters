@@ -25,6 +25,9 @@
     <Filter Include="Source\Objects\Instances">
       <UniqueIdentifier>{734593ac-1115-4b1b-bdda-583866749750}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Datatypes">
+      <UniqueIdentifier>{08f0f75d-539d-4d69-8786-c61e9a2796b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Systems\ArkanoidGame.cpp">
@@ -66,8 +69,8 @@
     <ClCompile Include="Source\Objects\Object.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Bitmap.cpp">
-      <Filter>Source\GUI</Filter>
+    <ClCompile Include="Source\Datatypes\Bitmap.cpp">
+      <Filter>Source\Datatypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +104,6 @@
     <ClInclude Include="Source\Headers\BasicHeader.h">
       <Filter>Source\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Headers\BasicStructures.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Objects\GameField.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
@@ -119,8 +119,11 @@
     <ClInclude Include="Source\Objects\Instances\Upgrade.h">
       <Filter>Source\Objects\Instances</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Bitmap.h">
-      <Filter>Source\GUI</Filter>
+    <ClInclude Include="Source\Datatypes\BasicStructures.h">
+      <Filter>Source\Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Datatypes\Bitmap.h">
+      <Filter>Source\Datatypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

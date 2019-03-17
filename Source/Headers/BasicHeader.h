@@ -1,5 +1,5 @@
 #pragma once
-#include "BasicStructures.h"
+#include "Datatypes/BasicStructures.h"
 #include <SFML/System/Clock.hpp>
 #include <memory>
 #include <vector>

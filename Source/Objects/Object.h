@@ -1,6 +1,6 @@
 #pragma once
 #include "Headers/GraphicsHeader.h"
-#include "GUI/Bitmap.h"
+#include "Datatypes/Bitmap.h"
 
 
 class Object

@@ -122,7 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\GUI\Bitmap.cpp" />
+    <ClCompile Include="Source\Datatypes\Bitmap.cpp" />
     <ClCompile Include="Source\GUI\Widgets\PlayingWidget.cpp" />
     <ClCompile Include="Source\GUI\Widgets\Widget.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -138,11 +138,11 @@
     <ClCompile Include="Source\Systems\Components\SpriteManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\GUI\Bitmap.h" />
+    <ClInclude Include="Source\Datatypes\BasicStructures.h" />
+    <ClInclude Include="Source\Datatypes\Bitmap.h" />
     <ClInclude Include="Source\GUI\Widgets\PlayingWidget.h" />
     <ClInclude Include="Source\GUI\Widgets\Widget.h" />
     <ClInclude Include="Source\Headers\BasicHeader.h" />
-    <ClInclude Include="Source\Headers\BasicStructures.h" />
     <ClInclude Include="Source\Headers\DebugHeader.h" />
     <ClInclude Include="Source\Headers\GraphicsHeader.h" />
     <ClInclude Include="Source\Objects\GameField.h" />
