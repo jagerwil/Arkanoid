@@ -13,7 +13,7 @@ PhysicsComponent::PhysicsComponent(GameField* gameField):
 
 void PhysicsComponent::tick(Time deltaTime)
 {
-    ///...
+    moveBalls(deltaTime);
 }
 
 void PhysicsComponent::moveBalls(Time deltaTime)

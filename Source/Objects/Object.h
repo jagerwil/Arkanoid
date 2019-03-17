@@ -1,5 +1,6 @@
 #pragma once
 #include "Headers/GraphicsHeader.h"
+#include "GUI/Bitmap.h"
 
 
 class Object
@@ -9,7 +10,7 @@ protected:
     Vector2f size;
 
     Sprite sprite;
-    Sprite bitmap;
+    Bitmap bitmap;
 
 public:
     Object(Vector2f coords);
@@ -19,7 +20,7 @@ public:
     virtual void setSize(Vector2f size);
 
     Sprite& getSprite();
-    Sprite& getBitmap();
+    Bitmap& getBitmap();
     Vector2f getPosition();
     Vector2f getSize();
 };

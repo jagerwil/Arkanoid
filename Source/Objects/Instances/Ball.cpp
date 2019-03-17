@@ -14,8 +14,6 @@ Ball::Ball(Vector2f coords, BallSize size, BallType type):
     setType(type);
 
     sprite.setOrigin((float)size, (float)size);
-    bitmap.setOrigin((float)size, (float)size);
-
     setSimulatePhysics(true);
 }
 

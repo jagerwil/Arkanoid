@@ -29,7 +29,7 @@ bool SpriteManager::loadPlatformSprite(Platform& platform)
 bool SpriteManager::loadBallSprite(Ball& ball)
 {
     Texture* ballTexture;
-    Texture* ballBitmap;
+    Image* ballBitmap;
     Vector2i* ballSize;
     Vector2i startCoords;
 
@@ -58,13 +58,13 @@ bool SpriteManager::loadBallSprite(Ball& ball)
     else return false;
 
     Sprite& sprite = ball.getSprite();
-    Sprite& bitmap = ball.getBitmap();
-    
+
     sprite.setTexture(*ballTexture);
     sprite.setTextureRect(IntRect(startCoords, *ballSize));
 
-    bitmap.setTexture(*ballBitmap);
-    bitmap.setTextureRect(IntRect({0, 0}, *ballSize));
+    Bitmap& bitmap = ball.getBitmap();
+
+    bitmap.initialize(*ballBitmap);
 
     return true;
 }
@@ -72,13 +72,12 @@ bool SpriteManager::loadBallSprite(Ball& ball)
 bool SpriteManager::loadBrickSprite(Brick& brick, Vector2i brickSize)
 {
     Sprite& sprite = brick.getSprite();
-    Sprite& bitmap = brick.getBitmap();
+    Bitmap& bitmap = brick.getBitmap();
 
     sprite.setTexture(brickTexture);
     sprite.setTextureRect(IntRect({0, 0}, brickSize));
 
-    bitmap.setTexture(brickBitmap);
-    sprite.setTextureRect(IntRect({0, 0}, brickSize));
+    bitmap.initialize(brickBitmap);
 
     return true;
 }

@@ -18,6 +18,8 @@ protected:
     vector<Upgrade> upgrades;
 
     Vector2i brickSize;
+    Vector2f bricksOffset;
+    Vector2i bricksFieldSize;
 
 public:
     GameField();

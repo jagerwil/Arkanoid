@@ -4,10 +4,12 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Image.hpp>
 using sf::Shape;
 using sf::RectangleShape;
 using sf::RenderWindow;
 using sf::Texture;
 using sf::Sprite;
+using sf::Image;
 using sf::Color;
 using sf::IntRect;

@@ -24,7 +24,7 @@ void ArkanoidGame::tick(Time deltaTime)
         break;
 
     case GameState::PLAYING:
-        physics->moveBalls(deltaTime);
+        physics->tick(deltaTime);
         break;
 
     case GameState::END_GAME:

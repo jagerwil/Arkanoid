@@ -14,9 +14,9 @@ protected:
     Texture platformTexture;
     Texture brickTexture;
 
-    Texture smallBallsBitmap;
-    Texture largeBallsBitmap;
-    Texture brickBitmap;
+    Image smallBallsBitmap;
+    Image largeBallsBitmap;
+    Image brickBitmap;
 
 public:
     SpriteManager();

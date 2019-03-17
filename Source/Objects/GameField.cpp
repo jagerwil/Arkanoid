@@ -9,6 +9,8 @@ GameField::GameField():
     spriteManager->loadPlatformSprite(platform);
 
     brickSize = Vector2i{100, 30};
+    bricksOffset = {33, 90};
+    bricksFieldSize = {13, 13};
 
     spawnBricks();
     spawnAttachedBall();
@@ -87,11 +89,9 @@ Platform& GameField::getPlatform()
 
 void GameField::spawnBricks()
 {
-    Vector2f bricksOffset = {33, 90};
-
-    for (int y = 0; y < 13; ++y)
+    for (int x = 0; x < bricksFieldSize.x; ++x)
     {
-        for (int x = 0; x < 13; ++x)
+        for (int y = 0; y < bricksFieldSize.y; ++y)
         {
             Vector2f coords = bricksOffset + Vector2f{(float)x * brickSize.x, (float)y * brickSize.y};
             spawnBrick(coords);
