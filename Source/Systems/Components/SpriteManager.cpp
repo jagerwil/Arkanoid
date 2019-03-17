@@ -1,5 +1,4 @@
 #include "SpriteManager.h"
-using sf::IntRect;
 
 
 Vector2i SpriteManager::smallBallSize = {21, 21};
@@ -10,9 +9,11 @@ SpriteManager::SpriteManager()
     smallBallsTexture.loadFromFile("Textures/small_balls.png");
     largeBallsTexture.loadFromFile("Textures/large_balls.png");
     platformTexture.loadFromFile("Textures/platform.png");
+    brickTexture.loadFromFile("Textures/brick.png");
 
     smallBallsBitmap.loadFromFile("Textures/small_balls_bitmap.png");
     largeBallsBitmap.loadFromFile("Textures/large_balls_bitmap.png");
+    brickBitmap.loadFromFile("Textures/brick_bitmap.png");
 }
 
 bool SpriteManager::loadPlatformSprite(Platform& platform)
@@ -64,6 +65,20 @@ bool SpriteManager::loadBallSprite(Ball& ball)
 
     bitmap.setTexture(*ballBitmap);
     bitmap.setTextureRect(IntRect({0, 0}, *ballSize));
+
+    return true;
+}
+
+bool SpriteManager::loadBrickSprite(Brick& brick, Vector2i brickSize)
+{
+    Sprite& sprite = brick.getSprite();
+    Sprite& bitmap = brick.getBitmap();
+
+    sprite.setTexture(brickTexture);
+    sprite.setTextureRect(IntRect({0, 0}, brickSize));
+
+    bitmap.setTexture(brickBitmap);
+    sprite.setTextureRect(IntRect({0, 0}, brickSize));
 
     return true;
 }

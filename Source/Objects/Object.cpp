@@ -19,6 +19,11 @@ void Object::setPosition(Vector2f coords)
     bitmap.setPosition(coords);
 }
 
+void Object::setSize(Vector2f size)
+{
+    this->size = size;
+}
+
 Sprite& Object::getSprite()
 {
     return sprite;
@@ -32,4 +37,9 @@ Sprite& Object::getBitmap()
 Vector2f Object::getPosition()
 {
     return coords;
+}
+
+Vector2f Object::getSize()
+{
+    return size;
 }

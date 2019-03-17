@@ -15,6 +15,8 @@ Ball::Ball(Vector2f coords, BallSize size, BallType type):
 
     sprite.setOrigin((float)size, (float)size);
     bitmap.setOrigin((float)size, (float)size);
+
+    setSimulatePhysics(true);
 }
 
 void Ball::recalculate()
@@ -45,6 +47,11 @@ void Ball::setType(BallType type)
     this->type = type;
 }
 
+void Ball::setSimulatePhysics(bool bSimulatePhysics)
+{
+    this->bSimulatePhysics = bSimulatePhysics;
+}
+
 Vector2f Ball::getMovementVector()
 {
     return movementVector;
@@ -63,4 +70,9 @@ BallType Ball::getType()
 Uint8 Ball::getRadius()
 {
     return (Uint8)size;
+}
+
+bool Ball::simulatePhysics()
+{
+    return bSimulatePhysics;
 }

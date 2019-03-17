@@ -13,5 +13,5 @@ public:
 
     void tick(Time deltaTime);
     void moveBalls(Time deltaTime);
-    void moveBall(Ball& ball, Time deltaTime);
+    void moveBall(Ball& ball, Uint32 index, Time deltaTime);
 };

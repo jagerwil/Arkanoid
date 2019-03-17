@@ -1,4 +1,5 @@
 #include "Platform.h"
+#include "Ball.h"
 ///USING GLOBAL VARIABLE!
 
 
@@ -6,6 +7,15 @@ Platform::Platform(Vector2f coords, Vector2f size):
     Object(coords)
 {
     setSize(size);
+    bBallAttached = false;
+}
+
+Platform::~Platform()
+{
+    if (ball != nullptr)
+    {
+        ball = nullptr;
+    }
 }
 
 void Platform::setX(float x)
@@ -22,16 +32,47 @@ void Platform::setX(float x)
         x = maxX;
     }
 
-    setPosition(Vector2f{x, coords.y});
+    Vector2f newCoords = Vector2f{x, coords.y};
+    setPosition(newCoords);
+
+    if (bBallAttached)
+    {
+        ball->setPosition(newCoords + ballOffset);
+    }
 }
 
 void Platform::setSize(Vector2f size)
 {
-    this->size = size;
+    Object::setSize(size);
     sprite.setOrigin({size.x / 2.f, 0});
 }
 
-Vector2f Platform::getSize()
+void Platform::attachBall(Ball* ball)
 {
-    return size;
+    if (!bBallAttached)
+    {
+        ball->setSimulatePhysics(false);
+        this->ball = ball;
+
+        ballOffset = {0, -(float)ball->getRadius() - 1};
+        ball->setPosition(coords + ballOffset);
+
+        bBallAttached = true;
+    }
+}
+
+void Platform::unAttachBall()
+{
+    if (bBallAttached)
+    {
+        ball->setSimulatePhysics(true);
+
+        ball = nullptr;
+        bBallAttached = false;
+    }
+}
+
+bool Platform::ballAttached()
+{
+    return bBallAttached;
 }

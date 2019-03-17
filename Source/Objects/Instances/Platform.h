@@ -2,15 +2,24 @@
 #include "Objects/Object.h"
 
 
+class Ball;
+
 class Platform : public Object
 {
 protected:
-    Vector2f size;
+    Ball* ball;
+    Vector2f ballOffset;
+    bool bBallAttached;
 
 public:
     Platform(Vector2f coords, Vector2f size);
+    ~Platform();
+
+    void attachBall(Ball* ball);
+    void unAttachBall();
 
     void setX(float x);
-    void setSize(Vector2f size);
-    Vector2f getSize();
+    void setSize(Vector2f size) override;
+
+    bool ballAttached();
 };

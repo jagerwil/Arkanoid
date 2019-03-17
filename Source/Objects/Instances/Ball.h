@@ -12,6 +12,7 @@ protected:
     Vector2f movementVector;
     float speed;
     float angle;
+    bool bSimulatePhysics;
     
 public:
     Ball(Vector2f coords, BallSize size = BallSize::SMALL, BallType type = BallType::COMMON);
@@ -21,9 +22,11 @@ public:
     void setRotation(float angle);
     void setSize(BallSize size);
     void setType(BallType type);
+    void setSimulatePhysics(bool bSimulatePhysics);
 
     Vector2f getMovementVector();
     BallSize getSize();
     BallType getType();
     Uint8 getRadius();
+    bool simulatePhysics();
 };

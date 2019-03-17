@@ -1,24 +1,17 @@
 #include "ArkanoidGame.h"
 #include "ArkanoidGraphics.h"
 #include "Components/PhysicsComponent.h"
-#include "Objects/GameField.h"
 
 
 ArkanoidGame::ArkanoidGame()
 {
-    gameField = new GameField();
-    physics = new PhysicsComponent(gameField);
+    gameField = nullptr;
+    physics = nullptr;
 }
 
 void ArkanoidGame::init(ArkanoidGraphics* graphics)
 {
     this->graphics = graphics;
-
-    gameField->spawnBall(Vector2f{700.f, 500.f});
-    Ball& ball = gameField->getBall(0);
-    ball.setSpeed(50.f);
-    ball.setRotation(-90.f);
-
     setGameState(GameState::PLAYING);
 }
 
@@ -48,6 +41,22 @@ void ArkanoidGame::movePlatform(float x)
     }
 }
 
+void ArkanoidGame::spawnAttachedBall()
+{
+    if (gameState == GameState::PLAYING)
+    {
+        gameField->spawnAttachedBall();
+    }
+}
+
+void ArkanoidGame::releaseBall()
+{
+    if (gameState == GameState::PLAYING)
+    {
+        gameField->releaseBall();
+    }
+}
+
 void ArkanoidGame::setGameState(GameState gameState)
 {
     this->gameState = gameState;
@@ -55,11 +64,22 @@ void ArkanoidGame::setGameState(GameState gameState)
     switch (gameState)
     {
     case GameState::START_GAME:
-        ///...
+        if (gameField != nullptr)
+        {
+            delete gameField;
+            gameField = nullptr;
+
+            delete physics;
+            physics = nullptr;
+        }
         break;
 
     case GameState::PLAYING:
-        ///...
+        if (gameField == nullptr)
+        {
+            gameField = new GameField();
+            physics = new PhysicsComponent(gameField);
+        }
         break;
 
     case GameState::END_GAME:

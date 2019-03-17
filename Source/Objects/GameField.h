@@ -17,24 +17,32 @@ protected:
     vector<Brick> bricks;
     vector<Upgrade> upgrades;
 
+    Vector2i brickSize;
+
 public:
     GameField();
 
-    void movePlatform(float x);
-
     void spawnBall(Vector2f coords, BallSize size = BallSize::SMALL, 
                    BallType type = BallType::COMMON);
-    void destroyBall(Uint8 index);
+    void destroyBall(Uint32 index);
 
     void spawnBrick(Vector2f coords);
-    void destroyBrick(Uint8 index);
+    void destroyBrick(Uint32 index);
 
     void spawnUpgrade(Vector2f coords, UpgradeType type);
-    void destroyUpgrade(Uint8 index);
+    void destroyUpgrade(Uint32 index);
+
+    void movePlatform(float x);
+    void spawnAttachedBall();
+    void releaseBall();
 
     vector<Ball>& getBalls();
+    Ball& getBall(Uint32 index);
+
     vector<Brick>& getBricks();
     vector<Upgrade>& getUpgrades();
     Platform& getPlatform();
-    Ball& getBall(Uint8 index);
+
+protected:
+    void spawnBricks();
 };

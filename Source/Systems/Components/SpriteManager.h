@@ -12,14 +12,16 @@ protected:
     Texture smallBallsTexture;
     Texture largeBallsTexture;
     Texture platformTexture;
+    Texture brickTexture;
 
     Texture smallBallsBitmap;
     Texture largeBallsBitmap;
+    Texture brickBitmap;
 
 public:
     SpriteManager();
+
     bool loadPlatformSprite(Platform& platform);
     bool loadBallSprite(Ball& ball);
-    bool loadBrickSprite(Brick& brick);
-    bool loadUpgradeSprite(Upgrade& update);
+    bool loadBrickSprite(Brick& brick, Vector2i brickSize);
 };

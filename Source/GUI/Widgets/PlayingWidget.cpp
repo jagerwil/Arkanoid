@@ -5,15 +5,24 @@ PlayingWidget::PlayingWidget(Vector2f coords, Vector2f size, ArkanoidGraphics* g
     Widget(coords, size, graphics),
     gameField {gameField}
 {
-    ///...
+    backgroundTexture.loadFromFile("Textures/background.jpg");
+    backgroundSprite.setTexture(backgroundTexture);
+    backgroundSprite.setTextureRect(IntRect(Vector2i{0, 0}, screenSize));
 }
 
 void PlayingWidget::draw()
 {
     graphics->draw(*this);
 
-    vector<Ball>& balls = gameField->getBalls();
+    graphics->draw(backgroundSprite);
 
+    vector<Brick>& bricks = gameField->getBricks();
+    for (Brick& brick : bricks)
+    {
+        graphics->draw(brick.getSprite());
+    }
+
+    vector<Ball>& balls = gameField->getBalls();
     for (Ball& ball : balls)
     {
         graphics->draw(ball.getSprite());

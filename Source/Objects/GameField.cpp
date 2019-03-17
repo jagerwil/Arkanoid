@@ -7,11 +7,32 @@ GameField::GameField():
 {
     spriteManager = new SpriteManager;
     spriteManager->loadPlatformSprite(platform);
+
+    brickSize = Vector2i{100, 30};
+
+    spawnBricks();
+    spawnAttachedBall();
 }
 
 void GameField::movePlatform(float x)
 {
     platform.setX(x);
+}
+
+void GameField::spawnAttachedBall()
+{
+    spawnBall(Vector2f{0.f, 0.f});
+
+    Ball& ball = getBall(balls.size() - 1);
+    ball.setSpeed(200.f);
+    ball.setRotation(-45.f);
+
+    platform.attachBall(&ball);
+}
+
+void GameField::releaseBall()
+{
+    platform.unAttachBall();
 }
 
 void GameField::spawnBall(Vector2f coords, BallSize size, BallType type)
@@ -20,7 +41,7 @@ void GameField::spawnBall(Vector2f coords, BallSize size, BallType type)
     spriteManager->loadBallSprite(balls[balls.size() - 1]);
 }
 
-void GameField::destroyBall(Uint8 index)
+void GameField::destroyBall(Uint32 index)
 {
     balls.erase(balls.begin() + index);
 }
@@ -28,6 +49,10 @@ void GameField::destroyBall(Uint8 index)
 void GameField::spawnBrick(Vector2f coords)
 {
     bricks.push_back(Brick(coords));
+    Brick& brick = bricks[bricks.size() - 1];
+
+    brick.setSize({(float)brickSize.x, (float)brickSize.y});
+    spriteManager->loadBrickSprite(brick, brickSize);
 }
 
 void GameField::spawnUpgrade(Vector2f coords, UpgradeType type)
@@ -38,6 +63,11 @@ void GameField::spawnUpgrade(Vector2f coords, UpgradeType type)
 vector<Ball>& GameField::getBalls()
 {
     return balls;
+}
+
+Ball& GameField::getBall(Uint32 index)
+{
+    return balls[index];
 }
 
 vector<Brick>& GameField::getBricks()
@@ -55,7 +85,16 @@ Platform& GameField::getPlatform()
     return platform;
 }
 
-Ball& GameField::getBall(Uint8 index)
+void GameField::spawnBricks()
 {
-    return balls[index];
+    Vector2f bricksOffset = {33, 90};
+
+    for (int y = 0; y < 13; ++y)
+    {
+        for (int x = 0; x < 13; ++x)
+        {
+            Vector2f coords = bricksOffset + Vector2f{(float)x * brickSize.x, (float)y * brickSize.y};
+            spawnBrick(coords);
+        }
+    }
 }

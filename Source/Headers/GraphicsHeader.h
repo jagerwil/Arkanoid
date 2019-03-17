@@ -10,3 +10,4 @@ using sf::RenderWindow;
 using sf::Texture;
 using sf::Sprite;
 using sf::Color;
+using sf::IntRect;
