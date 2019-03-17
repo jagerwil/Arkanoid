@@ -1,5 +1,7 @@
 #include "GameField.h"
 #include "Systems/Components/SpriteManager.h"
+#include <cmath>
+using std::floor;
 
 
 GameField::GameField():
@@ -11,6 +13,8 @@ GameField::GameField():
     brickSize = Vector2i{100, 30};
     bricksOffset = {33, 90};
     bricksFieldSize = {13, 13};
+
+    fieldBitmap.initialize(screenSize);
 
     spawnBricks();
     spawnAttachedBall();
@@ -55,6 +59,9 @@ void GameField::spawnBrick(Vector2f coords)
 
     brick.setSize({(float)brickSize.x, (float)brickSize.y});
     spriteManager->loadBrickSprite(brick, brickSize);
+
+    Vector2i bitmapCoords = {(int)floor(coords.x), (int)floor(coords.y)};
+    fieldBitmap.copyPartial(brick.getBitmap(), Vector2i{0, 0}, bitmapCoords, brickSize);
 }
 
 void GameField::spawnUpgrade(Vector2f coords, UpgradeType type)
@@ -67,9 +74,19 @@ vector<Ball>& GameField::getBalls()
     return balls;
 }
 
+Uint32 GameField::getBallsCount()
+{
+    return balls.size();
+}
+
 Ball& GameField::getBall(Uint32 index)
 {
     return balls[index];
+}
+
+Bitmap& GameField::getBitmap()
+{
+    return fieldBitmap;
 }
 
 vector<Brick>& GameField::getBricks()

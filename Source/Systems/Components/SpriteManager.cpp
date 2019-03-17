@@ -64,7 +64,7 @@ bool SpriteManager::loadBallSprite(Ball& ball)
 
     Bitmap& bitmap = ball.getBitmap();
 
-    bitmap.initialize(*ballBitmap);
+    bitmap.loadFromImage(*ballBitmap);
 
     return true;
 }
@@ -77,7 +77,7 @@ bool SpriteManager::loadBrickSprite(Brick& brick, Vector2i brickSize)
     sprite.setTexture(brickTexture);
     sprite.setTextureRect(IntRect({0, 0}, brickSize));
 
-    bitmap.initialize(brickBitmap);
+    bitmap.loadFromImage(brickBitmap);
 
     return true;
 }

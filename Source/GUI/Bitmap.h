@@ -5,17 +5,22 @@ class Bitmap
 {
 protected:
     bool** bitmapArray;
-    Vector2u size;
+    Vector2i size;
+
+    bool isInitialized;
 
 public:
     Bitmap();
-    void initialize(Image& image);
-    ///~Bitmap();
+    void initialize(Vector2i size);
 
-    friend vector<Vector2u> getCollisionPoints(Bitmap& bitmap1, Bitmap& bitmap2);
+    void loadFromImage(Image& image);
+    void copy(Bitmap& other);
+    void copyPartial(Bitmap& other, Vector2i fromCoords, Vector2i toCoords, Vector2i size);
 
+    friend vector<Vector2i> getCollisionPoints(Bitmap& bitmap1, Bitmap& bitmap2);
+
+
+    bool getPixel(int x, int y);
 protected:
-    bool getPixel(Uint32 x, Uint32 y);
-    Vector2u getSize();
+    Vector2i getSize();
 };
-

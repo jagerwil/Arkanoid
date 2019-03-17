@@ -50,6 +50,11 @@ void Ball::setSimulatePhysics(bool bSimulatePhysics)
     this->bSimulatePhysics = bSimulatePhysics;
 }
 
+Vector2f Ball::getOrigin()
+{
+    return sprite.getOrigin();
+}
+
 Vector2f Ball::getMovementVector()
 {
     return movementVector;

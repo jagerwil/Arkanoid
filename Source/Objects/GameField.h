@@ -21,6 +21,8 @@ protected:
     Vector2f bricksOffset;
     Vector2i bricksFieldSize;
 
+    Bitmap fieldBitmap;
+
 public:
     GameField();
 
@@ -39,8 +41,10 @@ public:
     void releaseBall();
 
     vector<Ball>& getBalls();
+    Uint32 getBallsCount();
     Ball& getBall(Uint32 index);
 
+    Bitmap& getBitmap();
     vector<Brick>& getBricks();
     vector<Upgrade>& getUpgrades();
     Platform& getPlatform();

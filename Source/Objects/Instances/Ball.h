@@ -24,6 +24,7 @@ public:
     void setType(BallType type);
     void setSimulatePhysics(bool bSimulatePhysics);
 
+    Vector2f getOrigin();
     Vector2f getMovementVector();
     BallSize getSize();
     BallType getType();
