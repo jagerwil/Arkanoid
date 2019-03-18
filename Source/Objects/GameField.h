@@ -18,8 +18,8 @@ protected:
     vector<Upgrade> upgrades;
 
     Vector2i brickSize;
-    Vector2f bricksOffset;
     Vector2i bricksFieldSize;
+    Vector2f bricksOffset;
 
     Bitmap fieldBitmap;
 
@@ -40,12 +40,15 @@ public:
     void spawnAttachedBall();
     void releaseBall();
 
+    Bitmap& getBitmap();
+
     vector<Ball>& getBalls();
     Uint32 getBallsCount();
     Ball& getBall(Uint32 index);
-
-    Bitmap& getBitmap();
+    
     vector<Brick>& getBricks();
+    Vector2i getBrickSize();
+    Vector2f getBricksOffset();
     vector<Upgrade>& getUpgrades();
     Platform& getPlatform();
 

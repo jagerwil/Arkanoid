@@ -3,7 +3,6 @@
 using std::sin;
 using std::cos;
 
-
 float Ball::radian = 180.f / 3.14159f;
 
 Ball::Ball(Vector2f coords, BallSize size, BallType type):
@@ -19,8 +18,8 @@ Ball::Ball(Vector2f coords, BallSize size, BallType type):
 
 void Ball::recalculate()
 {
-    movementVector.x = speed * cos(angle / radian);
-    movementVector.y = speed * sin(angle / radian);
+    movementVector.x = speed * cos(angleRadian);
+    movementVector.y = speed * sin(angleRadian);
 }
 
 void Ball::setSpeed(float speed)
@@ -31,7 +30,9 @@ void Ball::setSpeed(float speed)
 
 void Ball::setRotation(float angle)
 {
-    this->angle = angle;
+    this->angle = (int)angle % 360;
+    angleRadian = angle / radian;
+
     recalculate();
 }
 
@@ -53,6 +54,21 @@ void Ball::setSimulatePhysics(bool bSimulatePhysics)
 Vector2f Ball::getOrigin()
 {
     return sprite.getOrigin();
+}
+
+float Ball::getSpeed()
+{
+    return speed;
+}
+
+float Ball::getAngle()
+{
+    return angle;
+}
+
+float Ball::getAngleRadian()
+{
+    return angleRadian;
 }
 
 Vector2f Ball::getMovementVector()

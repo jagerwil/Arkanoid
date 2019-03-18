@@ -43,3 +43,11 @@ enum class UpgradeType : Uint8
     CATCH,
     EXTRA_LIFE
 };
+
+enum class CollisionSide
+{
+    LEFT,
+    RIGHT,
+    TOP,
+    BOTTOM
+};

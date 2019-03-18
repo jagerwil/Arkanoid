@@ -12,6 +12,7 @@ protected:
     Vector2f movementVector;
     float speed;
     float angle;
+    float angleRadian;
     bool bSimulatePhysics;
     
 public:
@@ -19,12 +20,17 @@ public:
     void recalculate();
 
     void setSpeed(float speed);
+    //Rotation in degrees
     void setRotation(float angle);
     void setSize(BallSize size);
     void setType(BallType type);
     void setSimulatePhysics(bool bSimulatePhysics);
 
     Vector2f getOrigin();
+    float getSpeed();
+    //Rotation in radian
+    float getAngleRadian();
+    float getAngle();
     Vector2f getMovementVector();
     BallSize getSize();
     BallType getType();

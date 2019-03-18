@@ -94,6 +94,16 @@ vector<Brick>& GameField::getBricks()
     return bricks;
 }
 
+Vector2i GameField::getBrickSize()
+{
+    return brickSize;
+}
+
+Vector2f GameField::getBricksOffset()
+{
+    return bricksOffset;
+}
+
 vector<Upgrade>& GameField::getUpgrades()
 {
     return upgrades;
