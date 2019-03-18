@@ -2,6 +2,7 @@
 #include "Systems/Components/SpriteManager.h"
 #include <cmath>
 using std::floor;
+using std::make_pair;
 
 
 GameField::GameField():
@@ -52,16 +53,17 @@ void GameField::destroyBall(Uint32 index)
     balls.erase(balls.begin() + index);
 }
 
-void GameField::spawnBrick(Vector2f coords)
+void GameField::destroyBrick(Vector2i relativeCoords)
 {
-    bricks.push_back(Brick(coords));
-    Brick& brick = bricks[bricks.size() - 1];
+    int index = getBrickIndex(relativeCoords);
+    bricks.erase(index);
 
-    brick.setSize({(float)brickSize.x, (float)brickSize.y});
-    spriteManager->loadBrickSprite(brick, brickSize);
+    Vector2i coords = {relativeCoords.x * brickSize.x + (int)bricksOffset.x,
+                       relativeCoords.y * brickSize.y + (int)bricksOffset.y};
 
-    Vector2i bitmapCoords = {(int)floor(coords.x), (int)floor(coords.y)};
-    fieldBitmap.copyPartial(brick.getBitmap(), Vector2i{0, 0}, bitmapCoords, brickSize);
+    Bitmap bitmap;
+    bitmap.initialize(brickSize);
+    fieldBitmap.copyPartial(bitmap, Vector2i{0, 0}, coords, brickSize);
 }
 
 void GameField::spawnUpgrade(Vector2f coords, UpgradeType type)
@@ -89,7 +91,7 @@ Bitmap& GameField::getBitmap()
     return fieldBitmap;
 }
 
-vector<Brick>& GameField::getBricks()
+map<int, Brick>& GameField::getBricks()
 {
     return bricks;
 }
@@ -120,8 +122,29 @@ void GameField::spawnBricks()
     {
         for (int y = 0; y < bricksFieldSize.y; ++y)
         {
-            Vector2f coords = bricksOffset + Vector2f{(float)x * brickSize.x, (float)y * brickSize.y};
-            spawnBrick(coords);
+            spawnBrick(Vector2i{x, y});
         }
     }
+}
+
+void GameField::spawnBrick(Vector2i relativeCoords)
+{
+    Vector2f coords = {(float)relativeCoords.x * brickSize.x + bricksOffset.x,
+                       (float)relativeCoords.y * brickSize.y + bricksOffset.y};
+
+    int index = getBrickIndex(relativeCoords);
+
+    bricks.insert(make_pair(index, Brick(coords)));
+    Brick& brick = bricks[index];
+
+    brick.setSize({(float)brickSize.x, (float)brickSize.y});
+    spriteManager->loadBrickSprite(brick, brickSize);
+
+    Vector2i bitmapCoords = {(int)floor(coords.x), (int)floor(coords.y)};
+    fieldBitmap.copyPartial(brick.getBitmap(), Vector2i{0, 0}, bitmapCoords, brickSize);
+}
+
+int GameField::getBrickIndex(Vector2i relativeCoords)
+{
+    return relativeCoords.y * bricksFieldSize.x + relativeCoords.x;
 }

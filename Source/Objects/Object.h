@@ -13,6 +13,7 @@ protected:
     Bitmap bitmap;
 
 public:
+    Object();
     Object(Vector2f coords);
 
     void move(Vector2f offset);

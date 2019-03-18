@@ -15,12 +15,13 @@ void PlayingWidget::draw()
     graphics->draw(*this);
 
     graphics->draw(backgroundSprite);
-
-    vector<Brick>& bricks = gameField->getBricks();
-    for (Brick& brick : bricks)
+    
+    map<int, Brick>& bricks = gameField->getBricks();
+    for (auto& brick : bricks)
     {
-        graphics->draw(brick.getSprite());
+        graphics->draw(brick.second.getSprite());
     }
+    
 
     vector<Ball>& balls = gameField->getBalls();
     for (Ball& ball : balls)

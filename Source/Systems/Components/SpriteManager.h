@@ -16,6 +16,7 @@ protected:
 
     Image smallBallsBitmap;
     Image largeBallsBitmap;
+    Image platformBitmap;
     Image brickBitmap;
 
 public:

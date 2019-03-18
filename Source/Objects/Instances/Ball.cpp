@@ -30,7 +30,7 @@ void Ball::setSpeed(float speed)
 
 void Ball::setRotation(float angle)
 {
-    this->angle = (int)angle % 360;
+    this->angle = (float)((int)angle % 360);
     angleRadian = angle / radian;
 
     recalculate();

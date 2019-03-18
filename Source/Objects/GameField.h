@@ -3,6 +3,8 @@
 #include "Objects/Instances/Platform.h"
 #include "Objects/Instances/Ball.h"
 #include "Objects/Instances/Upgrade.h"
+#include <map>
+using std::map;
 
 class SpriteManager;
 
@@ -14,7 +16,7 @@ protected:
 
     Platform platform;
     vector<Ball> balls;
-    vector<Brick> bricks;
+    map<int, Brick> bricks;
     vector<Upgrade> upgrades;
 
     Vector2i brickSize;
@@ -30,8 +32,7 @@ public:
                    BallType type = BallType::COMMON);
     void destroyBall(Uint32 index);
 
-    void spawnBrick(Vector2f coords);
-    void destroyBrick(Uint32 index);
+    void destroyBrick(Vector2i relativeCoords);
 
     void spawnUpgrade(Vector2f coords, UpgradeType type);
     void destroyUpgrade(Uint32 index);
@@ -46,12 +47,15 @@ public:
     Uint32 getBallsCount();
     Ball& getBall(Uint32 index);
     
-    vector<Brick>& getBricks();
+    map<int, Brick>& getBricks();
     Vector2i getBrickSize();
     Vector2f getBricksOffset();
+
     vector<Upgrade>& getUpgrades();
     Platform& getPlatform();
 
 protected:
     void spawnBricks();
+    void spawnBrick(Vector2i relativeCoords);
+    int getBrickIndex(Vector2i relativeCoords);
 };

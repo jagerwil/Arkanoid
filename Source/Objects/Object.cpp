@@ -1,6 +1,9 @@
 #include "Object.h"
 
 
+Object::Object()
+{ }
+
 Object::Object(Vector2f coords)
 {
     setPosition(coords);
