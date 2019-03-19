@@ -17,8 +17,8 @@ protected:
     GameState currentState;
 
 public:
-    ArkanoidGraphics(Vector2i screenSize);
-    void init(ArkanoidGame* game);
+    ArkanoidGraphics();
+    void init(ArkanoidGame* _game);
 
     void drawAll();
     void updateGameState(GameState& gameState);

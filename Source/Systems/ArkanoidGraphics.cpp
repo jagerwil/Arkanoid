@@ -5,14 +5,14 @@ using sf::VideoMode;
 using sf::Style::Close;
 
 
-ArkanoidGraphics::ArkanoidGraphics(Vector2i screenSize)
+ArkanoidGraphics::ArkanoidGraphics()
 {
     create(VideoMode(screenSize.x, screenSize.y), "Arkanoid", Close);
 }
 
-void ArkanoidGraphics::init(ArkanoidGame* game)
+void ArkanoidGraphics::init(ArkanoidGame* _game)
 {
-    this->game = game;
+    game = _game;
 }
 
 void ArkanoidGraphics::drawAll()

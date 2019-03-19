@@ -2,8 +2,9 @@
 #include <cmath>
 using std::sin;
 using std::cos;
+///DEBUG
+#include "Headers/DebugHeader.h"
 
-float Ball::radian = 180.f / 3.14159f;
 
 Ball::Ball(Vector2f coords, BallSize size, BallType type):
     Object(coords)
@@ -22,33 +23,42 @@ void Ball::recalculate()
     movementVector.y = speed * sin(angleRadian);
 }
 
-void Ball::setSpeed(float speed)
+void Ball::setSpeed(float _speed)
 {
-    this->speed = speed;
+    speed = _speed;
     recalculate();
 }
 
-void Ball::setRotation(float angle)
+void Ball::setRotation(float _angle)
 {
-    this->angle = (float)((int)angle % 360);
+    angle = (float)((int)_angle % 360);
+
+    if (angle > 180.f)
+    {
+        angle -= 360.f;
+    }
+    ///DEBUG
+    ///system("cls");
+    cout << "angle: " << angle << endl;
+    
     angleRadian = angle / radian;
 
     recalculate();
 }
 
-void Ball::setSize(BallSize size)
+void Ball::setSize(BallSize _size)
 {
-    this->size = size;
+    size = _size;
 }
 
-void Ball::setType(BallType type)
+void Ball::setType(BallType _type)
 {
-    this->type = type;
+    type = _type;
 }
 
-void Ball::setSimulatePhysics(bool bSimulatePhysics)
+void Ball::setSimulatePhysics(bool _bSimulatePhysics)
 {
-    this->bSimulatePhysics = bSimulatePhysics;
+    bSimulatePhysics = _bSimulatePhysics;
 }
 
 Vector2f Ball::getOrigin()

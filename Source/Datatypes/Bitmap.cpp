@@ -9,11 +9,24 @@ Bitmap::Bitmap()
     isInitialized = false;
 }
 
-void Bitmap::initialize(Vector2i size)
+Bitmap::~Bitmap()
+{
+    if (isInitialized)
+    {
+        for (int x = 0; x < size.x; ++x)
+        {
+            delete bitmapArray[x];
+        }
+
+        delete bitmapArray;
+    }
+}
+
+void Bitmap::initialize(Vector2i _size)
 {
     if (!isInitialized)
     {
-        this->size = size;
+        this->size = _size;
 
         bitmapArray = new bool*[size.x];
         for (int x = 0; x < size.x; ++x)
@@ -59,7 +72,7 @@ void Bitmap::copy(Bitmap& other)
     copyPartial(other, Vector2i{0, 0}, Vector2i{0, 0}, other.getSize());
 }
 
-void Bitmap::copyPartial(Bitmap& other, Vector2i fromCoords, Vector2i toCoords, Vector2i size)
+void Bitmap::copyPartial(Bitmap& other, Vector2i fromCoords, Vector2i toCoords, Vector2i _size)
 {
     Vector2i minSize;
 
@@ -73,10 +86,10 @@ void Bitmap::copyPartial(Bitmap& other, Vector2i fromCoords, Vector2i toCoords, 
         return; //invalid data
     }
 
-    minSize.x = min(size.x, other.getSize().x - fromCoords.x);
-    minSize.x = min(minSize.x, this->size.x - toCoords.x);
-    minSize.y = min(size.y, other.getSize().y - fromCoords.y);
-    minSize.y = min(minSize.y, this->size.y - toCoords.y);
+    minSize.x = min(_size.x, other.getSize().x - fromCoords.x);
+    minSize.x = min(minSize.x, size.x - toCoords.x);
+    minSize.y = min(_size.y, other.getSize().y - fromCoords.y);
+    minSize.y = min(minSize.y, size.y - toCoords.y);
 
     if (minSize.x <= 0 || minSize.y <= 0)
     {

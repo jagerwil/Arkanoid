@@ -31,7 +31,7 @@ void GameField::spawnAttachedBall()
     spawnBall(Vector2f{0.f, 0.f});
 
     Ball& ball = getBall(balls.size() - 1);
-    ball.setSpeed(200.f);
+    ball.setSpeed(400.f);
     ball.setRotation(-45.f);
 
     platform.attachBall(&ball);

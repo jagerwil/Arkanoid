@@ -1,6 +1,8 @@
 #include "PhysicsComponent.h"
 #include <cmath>
 using std::round;
+using std::ceil;
+using std::floor;
 using std::abs;
 ///DEBUG
 #include "Headers/DebugHeader.h"
@@ -31,53 +33,19 @@ void PhysicsComponent::moveBalls(Time deltaTime)
     }
 }
 
-void PhysicsComponent::moveBall(Ball& ball, Uint32 index, Time deltaTime)
+void PhysicsComponent::moveBall(Ball& ball, Uint32 ballIndex, Time deltaTime)
 {
     Vector2f moveVector = ball.getMovementVector();
     Vector2f offset = moveVector * deltaTime.asSeconds();
     Platform& platform = gameField->getPlatform();
 
-    if (ball.getPosition().y > screenSize.y + (float)ball.getRadius() + 1)
-    {
-        gameField->destroyBall(index);
-        ///DEBUG
-        gameField->spawnAttachedBall();
-        return;
-    }
-
-    if (ball.getPosition().x + offset.x > screenSize.x - (float)ball.getRadius())
-    {
-        offset = changeBallDirection(ball, Vector2f{(float)screenSize.x, 0},
-                                     offset, CollisionSide::RIGHT);
-    }
-    else if (ball.getPosition().x + offset.x < (float)ball.getRadius())
-    {
-        offset = changeBallDirection(ball, Vector2f{0, 0},
-                                     offset, CollisionSide::LEFT);
-    }
-
-    if (ball.getPosition().y + offset.y < (float)ball.getRadius())
-    {
-        offset = changeBallDirection(ball, Vector2f{0, (float)screenSize.y}, 
-                                     offset, CollisionSide::TOP);
-    }
-
-    if (ball.getPosition().y + (float)ball.getRadius() > platform.getPosition().y)
-    {
-        offset = checkBallCollisionWithPlatform(ball, offset);
-    }
-    else
-    {
-        offset = checkBallCollisionWithBricks(ball, offset);
-    }
-
-    ball.move(offset);
+    checkBallCollisions(ball, ballIndex, platform, offset);
 }
 
 Vector2f PhysicsComponent::checkBallCollisionWithBricks(Ball& ball, Vector2f offset)
 {
     Vector2f coords = ball.getPosition() + offset - ball.getOrigin();
-    Vector2i bitmapCoords = {(int)round(coords.x), (int)round(coords.y)};
+    Vector2i bitmapCoords = {(int)floor(coords.x), (int)floor(coords.y)};
 
     Vector2i bitmapSize = {(int)ball.getRadius() * 2 + 1, 
                            (int)ball.getRadius() * 2 + 1};
@@ -94,9 +62,13 @@ Vector2f PhysicsComponent::checkBallCollisionWithBricks(Ball& ball, Vector2f off
         return offset;
     }
 
+    system("cls");
+    cout << "ball coords: " << ball.getPosition().x << ' ' << ball.getPosition().y << endl;
+
     Vector2f cornerCoords = {(float)points[0].x, (float)points[0].y};
     cornerCoords += ball.getPosition();
     cornerCoords -= ball.getOrigin();
+    cornerCoords += offset;
 
     cornerCoords = getCollisionCornerCoords(cornerCoords, offset);
     CollisionSide collisionSide = calculateCollisionSide(ball, cornerCoords, offset);
@@ -106,14 +78,16 @@ Vector2f PhysicsComponent::checkBallCollisionWithBricks(Ball& ball, Vector2f off
     Vector2i brickCoords = calculateBrickRelativeCoords(cornerCoords);
     gameField->destroyBrick(brickCoords);
     
-    system("cls");
-    cout << points.size() << endl;
-    ///#DEBUG
     return offset;
 }
 
 Vector2f PhysicsComponent::checkBallCollisionWithPlatform(Ball& ball, Vector2f offset)
 {
+    if (ball.getMovementVector().y <= 0)
+    {
+        return offset;
+    }
+
     Platform& platform = gameField->getPlatform();
 
     int platformCoordX = (int)platform.getPosition().x;
@@ -138,32 +112,117 @@ float PhysicsComponent::calculateMovementX(Vector2f coords, float angle, float y
 
 float PhysicsComponent::calculateMovementY(Vector2f coords, float angle, float x)
 {
-    float speed = (x - coords.x) / sin(angle);
-    float y = speed * cos(angle) + coords.y;
+    float speed = (x - coords.x) / cos(angle);
+    float y = speed * sin(angle) + coords.y;
 
     return y;
 }
 
+void PhysicsComponent::checkBallCollisions(Ball& ball, Uint32 ballIndex, Platform& platform, Vector2f offset)
+{
+    bool hasOffsetChanged = false;
+
+    if (ball.getPosition().y > screenSize.y + (float)ball.getRadius() + 1)
+    {
+        gameField->destroyBall(ballIndex);
+        ///DEBUG
+        gameField->spawnAttachedBall();
+        return;
+    }
+
+    if (ball.getPosition().x + offset.x > screenSize.x - (float)ball.getRadius())
+    {
+        offset = changeBallDirection(ball, Vector2f{(float)screenSize.x, 0},
+                                     offset, CollisionSide::RIGHT);
+
+        hasOffsetChanged = true;
+    }
+    else if (ball.getPosition().x + offset.x < (float)ball.getRadius())
+    {
+        offset = changeBallDirection(ball, Vector2f{0, 0},
+                                     offset, CollisionSide::LEFT);
+
+        hasOffsetChanged = true;
+    }
+
+    if (ball.getPosition().y + offset.y < (float)ball.getRadius())
+    {
+        offset = changeBallDirection(ball, Vector2f{0, 0},
+                                     offset, CollisionSide::TOP);
+
+        hasOffsetChanged = true;
+    }
+
+    if (!hasOffsetChanged)
+    {
+        Vector2f offsetBefore = offset;
+        if (ball.getPosition().y + (float)ball.getRadius() > platform.getPosition().y)
+        {
+            offset = checkBallCollisionWithPlatform(ball, offset);
+        }
+        else
+        {
+            offset = checkBallCollisionWithBricks(ball, offset);
+        }
+
+        if (round(offsetBefore.x * 100) != round(offset.x * 100)
+            || round(offsetBefore.y * 100) != round(offset.y * 100))
+        {
+            hasOffsetChanged = true;
+        }
+    }
+
+    if (hasOffsetChanged)
+    {
+        checkBallCollisions(ball, ballIndex, platform, offset);
+    }
+    else
+    {
+        ball.move(offset);
+    }
+}
+
 Vector2f PhysicsComponent::getCollisionCornerCoords(Vector2f coords, Vector2f offset)
 {
+    cout << "coords: " << coords.x << ' ' << coords.y << endl;
+
     Vector2f cornerCoords = coords - gameField->getBricksOffset();
     Vector2i brickSize = gameField->getBrickSize();
 
-    int modX = (int)cornerCoords.x % brickSize.x;
-    int modY = (int)cornerCoords.y % brickSize.y;
+    int modX = (int)floor(cornerCoords.x) % brickSize.x;
+    int modY = (int)floor(cornerCoords.y) % brickSize.y;
+
+    cout << "Corner coords before: " << cornerCoords.x << ' ' << cornerCoords.y << endl;
 
     cornerCoords.x -= modX;
     cornerCoords.y -= modY;
 
-    if (offset.x < 0)
+    cout << "Corner coords after: " << cornerCoords.x << ' ' << cornerCoords.y << endl;
+
+    ///DEBUG
+    bool isLeft = true;
+    bool isTop = true;
+
+    if (offset.x < 0.f)
     {
-        cornerCoords.x += brickSize.x - 1;
+        cornerCoords.x += brickSize.x - 2;
+        isLeft = false;
+
     }
 
-    if (offset.y < 0)
+    if (offset.y < 0.f)
     {
-        cornerCoords.y += brickSize.y - 1;
+        cornerCoords.y += brickSize.y - 2;
+        isTop = false;
     }
+
+    if (isLeft) cout << "left/";
+    else cout << "right/";
+
+    if (isTop) cout << "top" << endl;
+    else cout << "bottom" << endl;
+
+    cout << "Offset: " << offset.x << ' ' << offset.y << endl;
 
     cornerCoords += gameField->getBricksOffset();
 
@@ -232,8 +291,27 @@ CollisionSide PhysicsComponent::calculateCollisionSide(Ball& ball, Vector2f corn
 
 Vector2f PhysicsComponent::changeBallDirection(Ball& ball, Vector2f cornerCoords, Vector2f offset, CollisionSide side)
 {
-    Vector2f collisionPointCoords = cornerCoords;
     float collisionPointDistance;
+
+    cout << "Side: ";
+    switch (side)
+    {
+    case CollisionSide::LEFT:
+        cout << "left";
+        break;
+    case CollisionSide::RIGHT:
+        cout << "right";
+        break;
+
+    case CollisionSide::TOP:
+        cout << "top";
+        break;
+    case CollisionSide::BOTTOM:
+        cout << "bottom";
+        break;
+    }
+
+    cout << endl;
 
     switch (side)
     {
@@ -258,12 +336,20 @@ Vector2f PhysicsComponent::changeBallDirection(Ball& ball, Vector2f cornerCoords
 Vector2i PhysicsComponent::calculateBrickRelativeCoords(Vector2f cornerCoords)
 {
     Vector2f brickRelativeCoordsF = cornerCoords - gameField->getBricksOffset();
+    brickRelativeCoordsF.x = ceil(brickRelativeCoordsF.x);
+    brickRelativeCoordsF.y = ceil(brickRelativeCoordsF.y);
+
+    cout << "Coords - offset: " << brickRelativeCoordsF.x << ' ' << brickRelativeCoordsF.y << endl;
+
     Vector2i brickRelativeCoords = {(int)brickRelativeCoordsF.x,
                                     (int)brickRelativeCoordsF.y};
+
     Vector2i brickSize = gameField->getBrickSize();
 
     brickRelativeCoords.x /= brickSize.x;
     brickRelativeCoords.y /= brickSize.y;
+
+    cout << "Relative coords: " << brickRelativeCoords.x << ' ' << brickRelativeCoords.y << endl;
 
     return brickRelativeCoords;
 }

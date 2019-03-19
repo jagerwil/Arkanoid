@@ -16,4 +16,6 @@ using sf::Vector2u;
 using sf::Vector2f;
 
 ///GLOBAL VARIABLE!
-static Vector2i screenSize = {1366, 768};
+const static Vector2i screenSize = {1366, 768};
+const static float pi = 3.14159f;
+const static float radian = 180.f / pi;

@@ -9,9 +9,9 @@ ArkanoidGame::ArkanoidGame()
     physics = nullptr;
 }
 
-void ArkanoidGame::init(ArkanoidGraphics* graphics)
+void ArkanoidGame::init(ArkanoidGraphics* _graphics)
 {
-    this->graphics = graphics;
+    graphics = _graphics;
     setGameState(GameState::PLAYING);
 }
 
@@ -41,14 +41,6 @@ void ArkanoidGame::movePlatform(float x)
     }
 }
 
-void ArkanoidGame::spawnAttachedBall()
-{
-    if (gameState == GameState::PLAYING)
-    {
-        gameField->spawnAttachedBall();
-    }
-}
-
 void ArkanoidGame::releaseBall()
 {
     if (gameState == GameState::PLAYING)
@@ -57,9 +49,10 @@ void ArkanoidGame::releaseBall()
     }
 }
 
-void ArkanoidGame::setGameState(GameState gameState)
+void ArkanoidGame::setGameState(GameState _gameState)
 {
-    this->gameState = gameState;
+    //GameState oldGameState = gameState; ///UNUSED
+    gameState = _gameState;
 
     switch (gameState)
     {

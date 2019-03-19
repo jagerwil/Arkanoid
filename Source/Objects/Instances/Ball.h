@@ -5,8 +5,6 @@
 class Ball : public Object
 {
 protected:
-    static float radian /* = 180.f / 3.14159f */;
-
     BallSize size;
     BallType type;
     Vector2f movementVector;
@@ -19,17 +17,18 @@ public:
     Ball(Vector2f coords, BallSize size = BallSize::SMALL, BallType type = BallType::COMMON);
     void recalculate();
 
-    void setSpeed(float speed);
-    //Rotation in degrees
-    void setRotation(float angle);
-    void setSize(BallSize size);
-    void setType(BallType type);
-    void setSimulatePhysics(bool bSimulatePhysics);
+    void setSpeed(float _speed);
+    //Set rotation in degrees
+    void setRotation(float _angle);
+    void setSize(BallSize _size);
+    void setType(BallType _type);
+    void setSimulatePhysics(bool _bSimulatePhysics);
 
     Vector2f getOrigin();
     float getSpeed();
     //Rotation in radian
     float getAngleRadian();
+    //Rotation in degrees
     float getAngle();
     Vector2f getMovementVector();
     BallSize getSize();

@@ -60,10 +60,6 @@ void ArkanoidInput::inputMouse(Event& event)
         {
             game->releaseBall();
         }
-        else if (event.key.code == Mouse::Right)
-        {
-            game->spawnAttachedBall();
-        }
     }
     else if (event.type == Event::MouseButtonReleased)
     {

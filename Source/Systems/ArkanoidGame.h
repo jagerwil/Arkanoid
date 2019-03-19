@@ -17,14 +17,13 @@ protected:
 
 public:
     ArkanoidGame();
-    void init(ArkanoidGraphics* graphics);
+    void init(ArkanoidGraphics* _graphics);
 
     void tick(Time deltaTime);
 
     void movePlatform(float x);
-    void spawnAttachedBall();
     void releaseBall();
 
-    void setGameState(GameState gameState);
+    void setGameState(GameState _gameState);
     GameField* getGameField();
 };

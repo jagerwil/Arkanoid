@@ -14,16 +14,16 @@ void Object::move(Vector2f offset)
     setPosition(coords + offset);
 }
 
-void Object::setPosition(Vector2f coords)
+void Object::setPosition(Vector2f _coords)
 {
-    this->coords = coords;
+    coords = _coords;
 
     sprite.setPosition(coords);
 }
 
-void Object::setSize(Vector2f size)
+void Object::setSize(Vector2f _size)
 {
-    this->size = size;
+    size = _size;
 }
 
 Sprite& Object::getSprite()

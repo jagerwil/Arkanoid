@@ -41,18 +41,18 @@ void Platform::setX(float x)
     }
 }
 
-void Platform::setSize(Vector2f size)
+void Platform::setSize(Vector2f _size)
 {
-    Object::setSize(size);
+    Object::setSize(_size);
     sprite.setOrigin({size.x / 2.f, 0});
 }
 
-void Platform::attachBall(Ball* ball)
+void Platform::attachBall(Ball* _ball)
 {
     if (!bBallAttached)
     {
-        ball->setSimulatePhysics(false);
-        this->ball = ball;
+        _ball->setSimulatePhysics(false);
+        ball = _ball;
 
         ballOffset = {0, -(float)ball->getRadius() - 1};
         ball->setPosition(coords + ballOffset);

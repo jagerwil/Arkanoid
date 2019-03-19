@@ -11,11 +11,12 @@ protected:
 
 public:
     Bitmap();
-    void initialize(Vector2i size);
+    ~Bitmap();
+    void initialize(Vector2i _size);
 
     void loadFromImage(Image& image);
     void copy(Bitmap& other);
-    void copyPartial(Bitmap& other, Vector2i fromCoords, Vector2i toCoords, Vector2i size);
+    void copyPartial(Bitmap& other, Vector2i fromCoords, Vector2i toCoords, Vector2i _size);
 
     friend vector<Vector2i> getCollisionPoints(Bitmap& bitmap1, Bitmap& bitmap2);
 

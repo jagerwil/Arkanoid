@@ -12,7 +12,7 @@ int main()
     Time deltaTime;
 
     ArkanoidGame* game = new ArkanoidGame();
-    ArkanoidGraphics* graphics = new ArkanoidGraphics(screenSize);
+    ArkanoidGraphics* graphics = new ArkanoidGraphics();
     ArkanoidInput* input = new ArkanoidInput(game, graphics);
 
     graphics->init(game);

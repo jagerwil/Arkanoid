@@ -17,8 +17,8 @@ public:
     Object(Vector2f coords);
 
     void move(Vector2f offset);
-    virtual void setPosition(Vector2f coords);
-    virtual void setSize(Vector2f size);
+    virtual void setPosition(Vector2f _coords);
+    virtual void setSize(Vector2f _size);
 
     Sprite& getSprite();
     Bitmap& getBitmap();
