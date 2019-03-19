@@ -13,19 +13,15 @@ SpriteManager::SpriteManager()
 
     smallBallsBitmap.loadFromFile("Textures/small_balls_bitmap.png");
     largeBallsBitmap.loadFromFile("Textures/large_balls_bitmap.png");
-    platformBitmap.loadFromFile("Textures/platform_bitmap.png");
     brickBitmap.loadFromFile("Textures/brick_bitmap.png");
 }
 
 bool SpriteManager::loadPlatformSprite(Platform& platform)
 {
     Sprite& sprite = platform.getSprite();
-    Bitmap& bitmap = platform.getBitmap();
 
     sprite.setTexture(platformTexture);
     sprite.setTextureRect(IntRect({0, 0}, {120, 20}));
-
-    bitmap.loadFromImage(platformBitmap);
 
     return true;
 }

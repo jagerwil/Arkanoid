@@ -21,16 +21,17 @@ void ArkanoidInput::handleEvents()
         {
             graphics->close();
         }
-        if (event.type == Event::KeyPressed
-            || event.type == Event::KeyReleased)
-        {
-            inputKeyboard(event);
-        }
-        else if (event.type == Event::MouseMoved
-                 || event.type == Event::MouseButtonPressed
-                 || event.type == Event::MouseButtonReleased)
+
+        if (event.type == Event::MouseMoved
+            || event.type == Event::MouseButtonPressed
+            || event.type == Event::MouseButtonReleased)
         {
             inputMouse(event);
+        }
+        else if (event.type == Event::KeyPressed
+                 || event.type == Event::KeyReleased)
+        {
+            inputKeyboard(event);
         }
 	}
 }
@@ -52,13 +53,13 @@ void ArkanoidInput::inputMouse(Event& event)
     if (event.type == Event::MouseMoved)
     {
         Vector2i mouseCoords = Mouse::getPosition(*graphics);
-        game->movePlatform((float)mouseCoords.x);
+        game->inputMovePlatform((float)mouseCoords.x);
     }
     if (event.type == Event::MouseButtonPressed)
     {
         if (event.key.code == Mouse::Left)
         {
-            game->releaseBall();
+            game->inputReleaseBall();
         }
     }
     else if (event.type == Event::MouseButtonReleased)

@@ -21,8 +21,8 @@ public:
 
     void tick(Time deltaTime);
 
-    void movePlatform(float x);
-    void releaseBall();
+    void inputMovePlatform(float x);
+    void inputReleaseBall();
 
     void setGameState(GameState _gameState);
     GameField* getGameField();

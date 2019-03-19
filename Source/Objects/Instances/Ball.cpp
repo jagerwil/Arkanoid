@@ -2,8 +2,6 @@
 #include <cmath>
 using std::sin;
 using std::cos;
-///DEBUG
-#include "Headers/DebugHeader.h"
 
 
 Ball::Ball(Vector2f coords, BallSize size, BallType type):
@@ -37,12 +35,8 @@ void Ball::setRotation(float _angle)
     {
         angle -= 360.f;
     }
-    ///DEBUG
-    ///system("cls");
-    cout << "angle: " << angle << endl;
     
     angleRadian = angle / radian;
-
     recalculate();
 }
 

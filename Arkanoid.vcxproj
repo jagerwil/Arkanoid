@@ -112,7 +112,8 @@
       <AdditionalDependencies>sfml-main.lib;sfml-system-s.lib;sfml-window-s.lib;sfml-graphics-s.lib;winmm.lib;gdi32.lib;freetype.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\Programs\SFML-2.5.1\lib</AdditionalLibraryDirectories>
-      <EntryPointSymbol>main</EntryPointSymbol>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -1,6 +1,5 @@
 #include "Platform.h"
 #include "Ball.h"
-///USING GLOBAL VARIABLE!
 
 
 Platform::Platform(Vector2f coords, Vector2f size):

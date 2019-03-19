@@ -33,7 +33,7 @@ void ArkanoidGame::tick(Time deltaTime)
     }
 }
 
-void ArkanoidGame::movePlatform(float x)
+void ArkanoidGame::inputMovePlatform(float x)
 {
     if (gameState == GameState::PLAYING)
     {
@@ -41,7 +41,7 @@ void ArkanoidGame::movePlatform(float x)
     }
 }
 
-void ArkanoidGame::releaseBall()
+void ArkanoidGame::inputReleaseBall()
 {
     if (gameState == GameState::PLAYING)
     {

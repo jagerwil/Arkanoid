@@ -2,13 +2,12 @@
 #include "Systems/ArkanoidGame.h"
 #include "Systems/ArkanoidGraphics.h"
 #include "Systems/ArkanoidInput.h"
-///USING GLOBAL VARIABLE!!!
 
 int main()
 {
-    ///screenSize = {1366, 768};
+    //screenSize in Headers/BasicHeader.h
 
-    Clock clock;
+    Clock clock;    //count time between ticks
     Time deltaTime;
 
     ArkanoidGame* game = new ArkanoidGame();

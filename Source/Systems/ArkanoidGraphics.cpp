@@ -25,7 +25,9 @@ void ArkanoidGraphics::drawAll()
 void ArkanoidGraphics::updateGameState(GameState& gameState)
 {
     if (currentState == gameState)
+    {
         return;
+    }
 
     currentState = gameState;
     currentWidget = nullptr;
