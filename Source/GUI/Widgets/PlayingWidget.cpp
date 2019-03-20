@@ -8,6 +8,14 @@ PlayingWidget::PlayingWidget(Vector2f coords, Vector2f size, ArkanoidGraphics* g
     backgroundTexture.loadFromFile("Textures/background.jpg");
     backgroundSprite.setTexture(backgroundTexture);
     backgroundSprite.setTextureRect(IntRect(Vector2i{0, 0}, screenSize));
+
+    scoreFont.loadFromFile("Textures/cyrillic_font.ttf");
+
+    scoreText.setPosition(30.f, 20.f);
+    scoreText.setFont(scoreFont);
+    scoreText.setFillColor(Color::White);
+    scoreText.setCharacterSize(30);
+    updateScore(0);
 }
 
 void PlayingWidget::draw()
@@ -15,6 +23,7 @@ void PlayingWidget::draw()
     graphics->draw(*this);
 
     graphics->draw(backgroundSprite);
+    graphics->draw(scoreText);
     
     map<int, Brick>& bricks = gameField->getBricks();
     for (auto& brick : bricks)
@@ -33,4 +42,10 @@ void PlayingWidget::draw()
     graphics->draw(platform.getSprite());
 
     ///...
+}
+
+void PlayingWidget::updateScore(Uint32 score)
+{
+    string scoreString = "Score: " + std::to_string(score);
+    scoreText.setString(scoreString);
 }

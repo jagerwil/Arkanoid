@@ -118,16 +118,21 @@ Platform& GameField::getPlatform()
 
 void GameField::spawnBricks()
 {
-    for (int x = 0; x < bricksFieldSize.x; ++x)
+    vector<Color> colors = {Color::Red, Color{255, 127, 0}, Color::Yellow, Color{0, 230, 0}, Color::White};
+
+    for (int y = 0; y < bricksFieldSize.y; ++y)
     {
-        for (int y = 0; y < bricksFieldSize.y; ++y)
+        int index = y % colors.size();
+        Color color = colors[index];
+
+        for (int x = 0; x < bricksFieldSize.x; ++x)
         {
-            spawnBrick(Vector2i{x, y});
+            spawnBrick(Vector2i{x, y}, color);
         }
     }
 }
 
-void GameField::spawnBrick(Vector2i relativeCoords)
+void GameField::spawnBrick(Vector2i relativeCoords, Color& color)
 {
     Vector2f coords = {(float)relativeCoords.x * brickSize.x + bricksOffset.x,
                        (float)relativeCoords.y * brickSize.y + bricksOffset.y};
@@ -142,6 +147,8 @@ void GameField::spawnBrick(Vector2i relativeCoords)
 
     Vector2i bitmapCoords = {(int)floor(coords.x), (int)floor(coords.y)};
     fieldBitmap.copyPartial(brick.getBitmap(), Vector2i{0, 0}, bitmapCoords, brickSize);
+
+    brick.setColor(color);
 }
 
 int GameField::getBrickIndex(Vector2i relativeCoords)

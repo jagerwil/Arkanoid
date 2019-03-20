@@ -48,3 +48,8 @@ void ArkanoidGraphics::updateGameState(GameState& gameState)
         break;
     }
 }
+
+void ArkanoidGraphics::updateScore(Uint32 score)
+{
+    playingWidget->updateScore(score);
+}

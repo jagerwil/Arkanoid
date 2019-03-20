@@ -2,9 +2,11 @@
 #include "Datatypes/BasicStructures.h"
 #include <SFML/System/Clock.hpp>
 #include <memory>
+#include <string>
 #include <vector>
 using std::unique_ptr;
 using std::shared_ptr;
+using std::string;
 using std::vector;
 using sf::Clock;
 using sf::Time;

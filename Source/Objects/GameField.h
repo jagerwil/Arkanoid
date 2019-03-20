@@ -56,6 +56,6 @@ public:
 
 protected:
     void spawnBricks();
-    void spawnBrick(Vector2i relativeCoords);
+    void spawnBrick(Vector2i relativeCoords, Color& color);
     int getBrickIndex(Vector2i relativeCoords);
 };

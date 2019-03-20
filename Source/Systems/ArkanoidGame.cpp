@@ -7,6 +7,8 @@ ArkanoidGame::ArkanoidGame()
 {
     gameField = nullptr;
     physics = nullptr;
+
+    score = 0;
 }
 
 void ArkanoidGame::init(ArkanoidGraphics* _graphics)
@@ -71,7 +73,7 @@ void ArkanoidGame::setGameState(GameState _gameState)
         if (gameField == nullptr)
         {
             gameField = new GameField();
-            physics = new PhysicsComponent(gameField);
+            physics = new PhysicsComponent(this, gameField);
         }
         break;
 
@@ -81,6 +83,12 @@ void ArkanoidGame::setGameState(GameState _gameState)
     }
 
     graphics->updateGameState(gameState);
+}
+
+void ArkanoidGame::increaseScore()
+{
+    ++score;
+    graphics->updateScore(score);
 }
 
 GameField* ArkanoidGame::getGameField()

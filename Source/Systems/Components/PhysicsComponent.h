@@ -2,14 +2,17 @@
 #include "Headers/BasicHeader.h"
 #include "Objects/GameField.h"
 
+class ArkanoidGame;
+
 
 class PhysicsComponent
 {
 protected:
     GameField* gameField;
+    ArkanoidGame* game;
 
 public:
-    PhysicsComponent(GameField* gameField);
+    PhysicsComponent(ArkanoidGame* _game, GameField* _gameField);
 
     void tick(Time deltaTime);
     

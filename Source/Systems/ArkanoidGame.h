@@ -14,6 +14,7 @@ protected:
     GameField* gameField;
 
     GameState gameState;
+    Uint32 score;
 
 public:
     ArkanoidGame();
@@ -25,5 +26,6 @@ public:
     void inputReleaseBall();
 
     void setGameState(GameState _gameState);
+    void increaseScore();
     GameField* getGameField();
 };

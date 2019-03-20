@@ -26,6 +26,11 @@ void Object::setSize(Vector2f _size)
     size = _size;
 }
 
+void Object::setColor(Color color)
+{
+    sprite.setColor(color);
+}
+
 Sprite& Object::getSprite()
 {
     return sprite;

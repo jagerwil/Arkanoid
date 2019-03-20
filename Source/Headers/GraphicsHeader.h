@@ -1,10 +1,13 @@
 #pragma once
 #include "Headers/BasicHeader.h"
+#include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Image.hpp>
+using sf::Font;
+using sf::Text;
 using sf::Shape;
 using sf::RectangleShape;
 using sf::RenderWindow;

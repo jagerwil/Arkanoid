@@ -1,12 +1,14 @@
 #include "PhysicsComponent.h"
+#include "Systems/ArkanoidGame.h"
 #include <cmath>
 using std::round;
 using std::floor;
 using std::abs;
 
 
-PhysicsComponent::PhysicsComponent(GameField* gameField):
-    gameField {gameField}
+PhysicsComponent::PhysicsComponent(ArkanoidGame* _game, GameField* _gameField):
+    game {_game},
+    gameField {_gameField}
 {
     ///...
 }
@@ -77,7 +79,9 @@ void PhysicsComponent::checkBallCollisions(Ball& ball, Uint32 ballIndex, Platfor
     if (!hasOffsetChanged)
     {
         Vector2f offsetBefore = offset;
-        if (ball.getPosition().y + (float)ball.getRadius() > platform.getPosition().y)
+        if (ball.getPosition().y + (float)ball.getRadius() > platform.getPosition().y
+            && ball.getPosition().y - (float)ball.getRadius()
+               < platform.getPosition().y + platform.getSize().y)
         {
             offset = checkBallCollisionWithPlatform(ball, offset);
         }
@@ -135,6 +139,8 @@ Vector2f PhysicsComponent::checkBallCollisionWithBricks(Ball& ball, Vector2f off
     //Remove brick
     Vector2i brickCoords = calculateBrickRelativeCoords(cornerCoords);
     gameField->destroyBrick(brickCoords);
+
+    game->increaseScore();
 
     return offset;
 }

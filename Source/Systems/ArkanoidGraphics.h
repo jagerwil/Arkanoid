@@ -21,5 +21,7 @@ public:
     void init(ArkanoidGame* _game);
 
     void drawAll();
+
     void updateGameState(GameState& gameState);
+    void updateScore(Uint32 score);
 };

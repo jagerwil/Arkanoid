@@ -19,6 +19,7 @@ public:
     void move(Vector2f offset);
     virtual void setPosition(Vector2f _coords);
     virtual void setSize(Vector2f _size);
+    void setColor(Color color);
 
     Sprite& getSprite();
     Bitmap& getBitmap();
