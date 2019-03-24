@@ -1,6 +1,6 @@
 #pragma once
 #include "Headers/GraphicsHeader.h"
-#include "Objects/GameField.h"
+#include "GameField.h"
 
 
 class SpriteManager

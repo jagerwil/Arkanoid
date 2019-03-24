@@ -18,6 +18,7 @@ protected:
 
 public:
     ArkanoidGraphics();
+    ~ArkanoidGraphics();
     void init(ArkanoidGame* _game);
 
     void drawAll();

@@ -18,6 +18,7 @@ protected:
 
 public:
     ArkanoidGame();
+    ~ArkanoidGame();
     void init(ArkanoidGraphics* _graphics);
 
     void tick(Time deltaTime);

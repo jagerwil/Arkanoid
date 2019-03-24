@@ -27,6 +27,7 @@ protected:
 
 public:
     GameField();
+    ~GameField();
 
     void spawnBall(Vector2f coords, BallSize size = BallSize::SMALL, 
                    BallType type = BallType::COMMON);

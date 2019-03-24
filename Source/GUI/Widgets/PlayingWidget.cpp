@@ -18,6 +18,11 @@ PlayingWidget::PlayingWidget(Vector2f coords, Vector2f size, ArkanoidGraphics* g
     updateScore(0);
 }
 
+PlayingWidget::~PlayingWidget()
+{
+    gameField = nullptr;
+}
+
 void PlayingWidget::draw()
 {
     graphics->draw(*this);

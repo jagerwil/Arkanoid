@@ -13,9 +13,6 @@
     <Filter Include="Source\Objects">
       <UniqueIdentifier>{dab875e8-3a0d-4d84-825d-06bd36f171db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Systems\Components">
-      <UniqueIdentifier>{e7086b99-ab03-4460-bb10-43caa7d44fc6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\GUI\Widgets">
       <UniqueIdentifier>{35b54b74-031b-4f5b-ab4d-12b4d662c36b}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="Source\Datatypes">
       <UniqueIdentifier>{08f0f75d-539d-4d69-8786-c61e9a2796b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components">
+      <UniqueIdentifier>{12a2d54e-4cce-46ef-9cf2-cb99d694eeeb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,20 +42,11 @@
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Systems\Components\PhysicsComponent.cpp">
-      <Filter>Source\Systems\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Widgets\PlayingWidget.cpp">
       <Filter>Source\GUI\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="Source\GUI\Widgets\Widget.cpp">
       <Filter>Source\GUI\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Systems\Components\SpriteManager.cpp">
-      <Filter>Source\Systems\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\GameField.cpp">
-      <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Source\Objects\Instances\Ball.cpp">
       <Filter>Source\Objects\Instances</Filter>
@@ -72,6 +63,15 @@
     <ClCompile Include="Source\Datatypes\Bitmap.cpp">
       <Filter>Source\Datatypes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\PhysicsComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\SpriteManager.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\GameField.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Systems\ArkanoidGame.h">
@@ -82,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="Source\Systems\ArkanoidInput.h">
       <Filter>Source\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Systems\Components\PhysicsComponent.h">
-      <Filter>Source\Systems\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Widgets\PlayingWidget.h">
       <Filter>Source\GUI\Widgets</Filter>
@@ -98,14 +95,8 @@
     <ClInclude Include="Source\Headers\GraphicsHeader.h">
       <Filter>Source\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\Components\SpriteManager.h">
-      <Filter>Source\Systems\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Headers\BasicHeader.h">
       <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\GameField.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\Object.h">
       <Filter>Source\Objects</Filter>
@@ -124,6 +115,15 @@
     </ClInclude>
     <ClInclude Include="Source\Datatypes\Bitmap.h">
       <Filter>Source\Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\PhysicsComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\SpriteManager.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\GameField.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,6 +13,12 @@ PhysicsComponent::PhysicsComponent(ArkanoidGame* _game, GameField* _gameField):
     ///...
 }
 
+PhysicsComponent::~PhysicsComponent()
+{
+    gameField = nullptr;
+    game = nullptr;
+}
+
 void PhysicsComponent::tick(Time deltaTime)
 {
     moveBalls(deltaTime);
@@ -139,7 +145,6 @@ Vector2f PhysicsComponent::checkBallCollisionWithBricks(Ball& ball, Vector2f off
     //Remove brick
     Vector2i brickCoords = calculateBrickRelativeCoords(cornerCoords);
     gameField->destroyBrick(brickCoords);
-
     game->increaseScore();
 
     return offset;

@@ -1,6 +1,6 @@
 #pragma once
 #include "Headers/BasicHeader.h"
-#include "Objects/GameField.h"
+#include "GameField.h"
 
 class ArkanoidGame;
 
@@ -13,6 +13,7 @@ protected:
 
 public:
     PhysicsComponent(ArkanoidGame* _game, GameField* _gameField);
+    ~PhysicsComponent();
 
     void tick(Time deltaTime);
     

@@ -1,5 +1,5 @@
 #include "GameField.h"
-#include "Systems/Components/SpriteManager.h"
+#include "SpriteManager.h"
 #include <cmath>
 using std::floor;
 using std::make_pair;
@@ -19,6 +19,11 @@ GameField::GameField():
 
     spawnBricks();
     spawnAttachedBall();
+}
+
+GameField::~GameField()
+{
+    delete spriteManager;
 }
 
 void GameField::movePlatform(float x)

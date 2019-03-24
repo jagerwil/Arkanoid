@@ -11,10 +11,7 @@ Platform::Platform(Vector2f coords, Vector2f size):
 
 Platform::~Platform()
 {
-    if (ball != nullptr)
-    {
-        ball = nullptr;
-    }
+    ball = nullptr;
 }
 
 void Platform::setX(float x)

@@ -12,6 +12,12 @@ ArkanoidInput::ArkanoidInput(ArkanoidGame* game, ArkanoidGraphics* graphics)
     this->graphics = graphics;
 }
 
+ArkanoidInput::~ArkanoidInput()
+{
+    game = nullptr;
+    graphics = nullptr;
+}
+
 void ArkanoidInput::handleEvents()
 {
     Event event;
@@ -33,7 +39,7 @@ void ArkanoidInput::handleEvents()
         {
             inputKeyboard(event);
         }
-	}
+    }
 }
 
 void ArkanoidInput::inputKeyboard(Event& event)

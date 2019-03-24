@@ -131,11 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Components\GameField.cpp" />
+    <ClCompile Include="Source\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="Source\Components\SpriteManager.cpp" />
     <ClCompile Include="Source\Datatypes\Bitmap.cpp" />
     <ClCompile Include="Source\GUI\Widgets\PlayingWidget.cpp" />
     <ClCompile Include="Source\GUI\Widgets\Widget.cpp" />
     <ClCompile Include="Source\Main.cpp" />
-    <ClCompile Include="Source\Objects\GameField.cpp" />
     <ClCompile Include="Source\Objects\Instances\Ball.cpp" />
     <ClCompile Include="Source\Objects\Instances\Platform.cpp" />
     <ClCompile Include="Source\Objects\Instances\Upgrade.cpp" />
@@ -143,10 +145,11 @@
     <ClCompile Include="Source\Systems\ArkanoidGame.cpp" />
     <ClCompile Include="Source\Systems\ArkanoidGraphics.cpp" />
     <ClCompile Include="Source\Systems\ArkanoidInput.cpp" />
-    <ClCompile Include="Source\Systems\Components\PhysicsComponent.cpp" />
-    <ClCompile Include="Source\Systems\Components\SpriteManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Components\GameField.h" />
+    <ClInclude Include="Source\Components\PhysicsComponent.h" />
+    <ClInclude Include="Source\Components\SpriteManager.h" />
     <ClInclude Include="Source\Datatypes\BasicStructures.h" />
     <ClInclude Include="Source\Datatypes\Bitmap.h" />
     <ClInclude Include="Source\GUI\Widgets\PlayingWidget.h" />
@@ -154,7 +157,6 @@
     <ClInclude Include="Source\Headers\BasicHeader.h" />
     <ClInclude Include="Source\Headers\DebugHeader.h" />
     <ClInclude Include="Source\Headers\GraphicsHeader.h" />
-    <ClInclude Include="Source\Objects\GameField.h" />
     <ClInclude Include="Source\Objects\Instances\Ball.h" />
     <ClInclude Include="Source\Objects\Instances\Platform.h" />
     <ClInclude Include="Source\Objects\Instances\Upgrade.h" />
@@ -162,8 +164,6 @@
     <ClInclude Include="Source\Systems\ArkanoidGame.h" />
     <ClInclude Include="Source\Systems\ArkanoidGraphics.h" />
     <ClInclude Include="Source\Systems\ArkanoidInput.h" />
-    <ClInclude Include="Source\Systems\Components\PhysicsComponent.h" />
-    <ClInclude Include="Source\Systems\Components\SpriteManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

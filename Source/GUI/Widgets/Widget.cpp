@@ -8,6 +8,11 @@ Widget::Widget(Vector2f coords, Vector2f size, ArkanoidGraphics* graphics)
     this->graphics = graphics;
 }
 
+Widget::~Widget()
+{
+    graphics = nullptr;
+}
+
 void Widget::draw()
 {
     graphics->draw(*this);

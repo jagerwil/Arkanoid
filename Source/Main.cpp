@@ -28,5 +28,9 @@ int main()
         graphics->drawAll();
     }
 
+    delete game;
+    delete graphics;
+    delete input;
+
     return 0;
 }

@@ -1,14 +1,19 @@
 #include "ArkanoidGame.h"
 #include "ArkanoidGraphics.h"
+#include "Components/GameField.h"
 #include "Components/PhysicsComponent.h"
 
 
 ArkanoidGame::ArkanoidGame()
 {
-    gameField = nullptr;
-    physics = nullptr;
-
     score = 0;
+}
+
+ArkanoidGame::~ArkanoidGame()
+{
+    graphics = nullptr;
+    delete physics;
+    delete gameField;
 }
 
 void ArkanoidGame::init(ArkanoidGraphics* _graphics)

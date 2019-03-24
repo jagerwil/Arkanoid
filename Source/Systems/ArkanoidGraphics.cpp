@@ -10,6 +10,17 @@ ArkanoidGraphics::ArkanoidGraphics()
     create(VideoMode(screenSize.x, screenSize.y), "Arkanoid", Close);
 }
 
+ArkanoidGraphics::~ArkanoidGraphics()
+{
+    game = nullptr;
+    currentWidget = nullptr;
+
+    if (playingWidget != nullptr)
+    {
+        delete playingWidget;
+    }
+}
+
 void ArkanoidGraphics::init(ArkanoidGame* _game)
 {
     game = _game;
